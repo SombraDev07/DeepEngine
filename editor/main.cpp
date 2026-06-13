@@ -127,9 +127,7 @@ int WINAPI WinMain(HINSTANCE hInst, HINSTANCE, LPSTR, int nShow) {
 				if (ImGui::IsKeyDown(ImGuiKey_E)) g_cam.position = g_cam.position + up * speed;
 			}
 
-			Vec3 fwd(cosf(pitch) * sinf(yaw), sinf(pitch), cosf(pitch) * cosf(yaw));
-			g_cam.target = g_cam.position + fwd;
-			g_cam.up = Vec3(0, 1, 0);
+				Vec3 fwd(cosf(g_cam.pitch) * sinf(g_cam.yaw), sinf(g_cam.pitch), cosf(g_cam.pitch) * cosf(g_cam.yaw)); (void)fwd;
 
 			ImVec2 avail = ImGui::GetContentRegionAvail();
 			g_cam.aspect = avail.x / std::max(avail.y, 1.0f); g_cam.Update();

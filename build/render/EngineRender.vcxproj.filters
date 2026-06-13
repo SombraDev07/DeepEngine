@@ -10,6 +10,9 @@
     <ClCompile Include="C:\Engine\render\Mesh.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="C:\Engine\render\cgltf_impl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="C:\Engine\render\CMakeLists.txt" />

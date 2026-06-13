@@ -41,6 +41,9 @@ void RenderSystem::Shutdown()
 	if (m_litLayout) m_litLayout->Release();
 	if (m_cbCamera) m_cbCamera->Release();
 	if (m_cbLighting) m_cbLighting->Release();
+	if (m_cbSky) m_cbSky->Release();
+	if (m_skyVS) m_skyVS->Release();
+	if (m_skyPS) m_skyPS->Release();
 	if (m_ctx) m_ctx->Release();
 }
 
@@ -77,7 +80,7 @@ void RenderSystem::BeginFrame()
 
 void RenderSystem::EndFrame() {}
 
-void RenderSystem::RenderViewport(const Camera&, ID3D11ShaderResourceView** out) { if (out) *out = m_viewportSRV; }
+void RenderSystem::RenderViewport(const Camera& cam, ID3D11ShaderResourceView** out) { RenderSky(cam); if (out) *out = m_viewportSRV; }
 
 ID3D11Buffer* RenderSystem::CreateVB(const void* data, u32 stride, u32 count)
 {
@@ -264,11 +267,59 @@ bool RenderSystem::CompileShaders()
 	m_device->CreatePixelShader(b->GetBufferPointer(), b->GetBufferSize(), nullptr, &m_litPS);
 	b->Release();
 
+	// Sky shader
+	const char* skyVS = R"(
+		struct VO { float4 p : SV_POSITION; };
+		VO main(uint id : SV_VertexID) {
+			VO o; o.p = float4(id==0?-1:(id==1?3:-1), id==0?1:(id==1?3:-3), 0, 1); return o;
+		}
+	)";
+	const char* skyPS = R"(
+		cbuffer Sky : register(b0) { float3 sunDir; float pad; float4 c1; float4 c2; }
+		float4 main(float4 p : SV_POSITION) : SV_Target {
+			float3 d = normalize(float3(p.x, 0.5 + abs(p.y) * 0.5, p.y));
+			float h = clamp(d.y, 0, 1);
+			float3 col = lerp(c1.rgb, c2.rgb, h);
+			float sun = saturate(dot(d, sunDir));
+			col += pow(sun, 128) * float3(1, 0.9f, 0.6f) * 2;
+			return float4(col, 1);
+		}
+	)";
+	hr = D3DCompile(skyVS, strlen(skyVS), "skyvs", nullptr, nullptr, "main", "vs_5_0", 0, 0, &b, &e);
+	if (FAILED(hr)) { LOG_ERROR("Sky VS: %s", e ? (char*)e->GetBufferPointer() : "?"); if (e) e->Release(); }
+	else { m_device->CreateVertexShader(b->GetBufferPointer(), b->GetBufferSize(), nullptr, &m_skyVS); b->Release(); }
+
+	hr = D3DCompile(skyPS, strlen(skyPS), "skyps", nullptr, nullptr, "main", "ps_5_0", 0, 0, &b, &e);
+	if (FAILED(hr)) { LOG_ERROR("Sky PS: %s", e ? (char*)e->GetBufferPointer() : "?"); if (e) e->Release(); }
+	else { m_device->CreatePixelShader(b->GetBufferPointer(), b->GetBufferSize(), nullptr, &m_skyPS); b->Release(); }
+
 	// Constant buffers
 	D3D11_BUFFER_DESC cbd = {}; cbd.Usage = D3D11_USAGE_DEFAULT; cbd.ByteWidth = sizeof(CameraCB); cbd.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
 	m_device->CreateBuffer(&cbd, nullptr, &m_cbCamera);
+
 	cbd.ByteWidth = sizeof(LightCB);
 	m_device->CreateBuffer(&cbd, nullptr, &m_cbLighting);
 
+	struct SkyCB { float sunDir[3]; float p1; float c1[4]; float c2[4]; };
+	cbd.ByteWidth = sizeof(SkyCB);
+	m_device->CreateBuffer(&cbd, nullptr, &m_cbSky);
+
 	return true;
+}
+
+void RenderSystem::RenderSky(const Camera& cam)
+{
+	if (!m_skyVS || !m_skyPS) return;
+	m_ctx->VSSetShader(m_skyVS, nullptr, 0);
+	m_ctx->PSSetShader(m_skyPS, nullptr, 0);
+	m_ctx->IASetInputLayout(nullptr);
+	m_ctx->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+	struct SkyCB { float sd[3]; float p1; float c1[4]; float c2[4]; };
+	SkyCB sc = {{0.4f, 0.8f, 0.2f}, 0, {0.1f,0.3f,0.8f,1}, {0.4f,0.6f,1.0f,1}};
+	m_ctx->UpdateSubresource(m_cbSky, 0, nullptr, &sc, 0, 0);
+	m_ctx->PSSetConstantBuffers(0, 1, &m_cbSky);
+	D3D11_VIEWPORT dv = {0,0,(float)m_width,(float)m_height,0,1};
+	m_ctx->RSSetViewports(1, &dv);
+	m_ctx->OMSetRenderTargets(1, &m_viewportRTV, nullptr); // no depth - sky always visible
+	m_ctx->Draw(3, 0);
 }

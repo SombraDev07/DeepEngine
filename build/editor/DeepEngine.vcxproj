@@ -86,10 +86,11 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Engine\core\jobs;C:\Engine\core\platform;C:\Engine\core;C:\Engine\core\memory;C:\Engine\core\console;C:\Engine\core\math;C:\Engine\render;C:\Engine\build\_deps\entt-src\src;C:\Engine\build\_deps\imgui-src;C:\Engine\build\_deps\imgui-src\backends;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Engine\core\jobs;C:\Engine\core\platform;C:\Engine\core;C:\Engine\core\memory;C:\Engine\core\console;C:\Engine\core\math;C:\Engine\render;C:\Engine\thirdparty\cgltf;C:\Engine\physics;C:\Engine\build\_deps\joltphysics-src;C:\Engine\build\_deps\entt-src\src;C:\Engine\build\_deps\joltphysics-src\Build\..;C:\Engine\build\_deps\imgui-src;C:\Engine\build\_deps\imgui-src\backends;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <EnableEnhancedInstructionSet>AdvancedVectorExtensions2</EnableEnhancedInstructionSet>
       <ExceptionHandling>Sync</ExceptionHandling>
       <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
       <LanguageStandard>stdcpp20</LanguageStandard>
@@ -99,16 +100,16 @@
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <SupportJustMyCode></SupportJustMyCode>
       <UseFullPaths>false</UseFullPaths>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;PLATFORM_WINDOWS;CMAKE_INTDIR="Debug"</PreprocessorDefinitions>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;PLATFORM_WINDOWS;_DEBUG;JPH_FLOATING_POINT_EXCEPTIONS_ENABLED;JPH_CROSS_PLATFORM_DETERMINISTIC;JPH_DEBUG_RENDERER;JPH_PROFILE_ENABLED;JPH_USE_AVX2;JPH_USE_AVX;JPH_USE_SSE4_1;JPH_USE_SSE4_2;JPH_USE_LZCNT;JPH_USE_TZCNT;JPH_USE_F16C;CMAKE_INTDIR="Debug"</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
       <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
     </ClCompile>
     <ResourceCompile>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;PLATFORM_WINDOWS;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Engine\core\jobs;C:\Engine\core\platform;C:\Engine\core;C:\Engine\core\memory;C:\Engine\core\console;C:\Engine\core\math;C:\Engine\render;C:\Engine\build\_deps\entt-src\src;C:\Engine\build\_deps\imgui-src;C:\Engine\build\_deps\imgui-src\backends;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;PLATFORM_WINDOWS;JPH_FLOATING_POINT_EXCEPTIONS_ENABLED;JPH_CROSS_PLATFORM_DETERMINISTIC;JPH_DEBUG_RENDERER;JPH_PROFILE_ENABLED;JPH_USE_AVX2;JPH_USE_AVX;JPH_USE_SSE4_1;JPH_USE_SSE4_2;JPH_USE_LZCNT;JPH_USE_TZCNT;JPH_USE_F16C;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Engine\core\jobs;C:\Engine\core\platform;C:\Engine\core;C:\Engine\core\memory;C:\Engine\core\console;C:\Engine\core\math;C:\Engine\render;C:\Engine\thirdparty\cgltf;C:\Engine\physics;C:\Engine\build\_deps\joltphysics-src;C:\Engine\build\_deps\entt-src\src;C:\Engine\build\_deps\joltphysics-src\Build\..;C:\Engine\build\_deps\imgui-src;C:\Engine\build\_deps\imgui-src\backends;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\Engine\core\jobs;C:\Engine\core\platform;C:\Engine\core;C:\Engine\core\memory;C:\Engine\core\console;C:\Engine\core\math;C:\Engine\render;C:\Engine\build\_deps\entt-src\src;C:\Engine\build\_deps\imgui-src;C:\Engine\build\_deps\imgui-src\backends;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Engine\core\jobs;C:\Engine\core\platform;C:\Engine\core;C:\Engine\core\memory;C:\Engine\core\console;C:\Engine\core\math;C:\Engine\render;C:\Engine\thirdparty\cgltf;C:\Engine\physics;C:\Engine\build\_deps\joltphysics-src;C:\Engine\build\_deps\entt-src\src;C:\Engine\build\_deps\joltphysics-src\Build\..;C:\Engine\build\_deps\imgui-src;C:\Engine\build\_deps\imgui-src\backends;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -116,7 +117,7 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <Link>
-      <AdditionalDependencies>..\core\jobs\Debug\EngineJobs.lib;..\core\console\Debug\EngineConsole.lib;..\render\Debug\EngineRender.lib;..\Debug\ImGui.lib;d3d11.lib;d3dcompiler.lib;dxguid.lib;winmm.lib;..\core\console\Debug\EngineConsole.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalDependencies>..\core\jobs\Debug\EngineJobs.lib;..\core\console\Debug\EngineConsole.lib;..\render\Debug\EngineRender.lib;..\physics\Debug\EnginePhysics.lib;..\Debug\ImGui.lib;d3d11.lib;d3dcompiler.lib;dxguid.lib;winmm.lib;comdlg32.lib;..\core\console\Debug\EngineConsole.lib;..\_deps\joltphysics-build\Debug\Jolt.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -131,9 +132,10 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Engine\core\jobs;C:\Engine\core\platform;C:\Engine\core;C:\Engine\core\memory;C:\Engine\core\console;C:\Engine\core\math;C:\Engine\render;C:\Engine\build\_deps\entt-src\src;C:\Engine\build\_deps\imgui-src;C:\Engine\build\_deps\imgui-src\backends;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Engine\core\jobs;C:\Engine\core\platform;C:\Engine\core;C:\Engine\core\memory;C:\Engine\core\console;C:\Engine\core\math;C:\Engine\render;C:\Engine\thirdparty\cgltf;C:\Engine\physics;C:\Engine\build\_deps\joltphysics-src;C:\Engine\build\_deps\entt-src\src;C:\Engine\build\_deps\joltphysics-src\Build\..;C:\Engine\build\_deps\imgui-src;C:\Engine\build\_deps\imgui-src\backends;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <EnableEnhancedInstructionSet>AdvancedVectorExtensions2</EnableEnhancedInstructionSet>
       <ExceptionHandling>Sync</ExceptionHandling>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
       <LanguageStandard>stdcpp20</LanguageStandard>
@@ -143,18 +145,18 @@
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <SupportJustMyCode></SupportJustMyCode>
       <UseFullPaths>false</UseFullPaths>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;PLATFORM_WINDOWS;CMAKE_INTDIR="Release"</PreprocessorDefinitions>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;PLATFORM_WINDOWS;JPH_FLOATING_POINT_EXCEPTIONS_ENABLED;JPH_CROSS_PLATFORM_DETERMINISTIC;JPH_DEBUG_RENDERER;JPH_PROFILE_ENABLED;JPH_USE_AVX2;JPH_USE_AVX;JPH_USE_SSE4_1;JPH_USE_SSE4_2;JPH_USE_LZCNT;JPH_USE_TZCNT;JPH_USE_F16C;CMAKE_INTDIR="Release"</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
       <DebugInformationFormat>
       </DebugInformationFormat>
       <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
     </ClCompile>
     <ResourceCompile>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;PLATFORM_WINDOWS;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Engine\core\jobs;C:\Engine\core\platform;C:\Engine\core;C:\Engine\core\memory;C:\Engine\core\console;C:\Engine\core\math;C:\Engine\render;C:\Engine\build\_deps\entt-src\src;C:\Engine\build\_deps\imgui-src;C:\Engine\build\_deps\imgui-src\backends;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;PLATFORM_WINDOWS;JPH_FLOATING_POINT_EXCEPTIONS_ENABLED;JPH_CROSS_PLATFORM_DETERMINISTIC;JPH_DEBUG_RENDERER;JPH_PROFILE_ENABLED;JPH_USE_AVX2;JPH_USE_AVX;JPH_USE_SSE4_1;JPH_USE_SSE4_2;JPH_USE_LZCNT;JPH_USE_TZCNT;JPH_USE_F16C;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Engine\core\jobs;C:\Engine\core\platform;C:\Engine\core;C:\Engine\core\memory;C:\Engine\core\console;C:\Engine\core\math;C:\Engine\render;C:\Engine\thirdparty\cgltf;C:\Engine\physics;C:\Engine\build\_deps\joltphysics-src;C:\Engine\build\_deps\entt-src\src;C:\Engine\build\_deps\joltphysics-src\Build\..;C:\Engine\build\_deps\imgui-src;C:\Engine\build\_deps\imgui-src\backends;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\Engine\core\jobs;C:\Engine\core\platform;C:\Engine\core;C:\Engine\core\memory;C:\Engine\core\console;C:\Engine\core\math;C:\Engine\render;C:\Engine\build\_deps\entt-src\src;C:\Engine\build\_deps\imgui-src;C:\Engine\build\_deps\imgui-src\backends;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Engine\core\jobs;C:\Engine\core\platform;C:\Engine\core;C:\Engine\core\memory;C:\Engine\core\console;C:\Engine\core\math;C:\Engine\render;C:\Engine\thirdparty\cgltf;C:\Engine\physics;C:\Engine\build\_deps\joltphysics-src;C:\Engine\build\_deps\entt-src\src;C:\Engine\build\_deps\joltphysics-src\Build\..;C:\Engine\build\_deps\imgui-src;C:\Engine\build\_deps\imgui-src\backends;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -162,7 +164,7 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <Link>
-      <AdditionalDependencies>..\core\jobs\Release\EngineJobs.lib;..\core\console\Release\EngineConsole.lib;..\render\Release\EngineRender.lib;..\Release\ImGui.lib;d3d11.lib;d3dcompiler.lib;dxguid.lib;winmm.lib;..\core\console\Release\EngineConsole.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalDependencies>..\core\jobs\Release\EngineJobs.lib;..\core\console\Release\EngineConsole.lib;..\render\Release\EngineRender.lib;..\physics\Release\EnginePhysics.lib;..\Release\ImGui.lib;d3d11.lib;d3dcompiler.lib;dxguid.lib;winmm.lib;comdlg32.lib;..\core\console\Release\EngineConsole.lib;..\_deps\joltphysics-build\Release\Jolt.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>false</GenerateDebugInformation>
@@ -177,9 +179,10 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Engine\core\jobs;C:\Engine\core\platform;C:\Engine\core;C:\Engine\core\memory;C:\Engine\core\console;C:\Engine\core\math;C:\Engine\render;C:\Engine\build\_deps\entt-src\src;C:\Engine\build\_deps\imgui-src;C:\Engine\build\_deps\imgui-src\backends;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Engine\core\jobs;C:\Engine\core\platform;C:\Engine\core;C:\Engine\core\memory;C:\Engine\core\console;C:\Engine\core\math;C:\Engine\render;C:\Engine\thirdparty\cgltf;C:\Engine\physics;C:\Engine\build\_deps\joltphysics-src;C:\Engine\build\_deps\entt-src\src;C:\Engine\build\_deps\joltphysics-src\Build\..;C:\Engine\build\_deps\imgui-src;C:\Engine\build\_deps\imgui-src\backends;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <EnableEnhancedInstructionSet>AdvancedVectorExtensions2</EnableEnhancedInstructionSet>
       <ExceptionHandling>Sync</ExceptionHandling>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <LanguageStandard>stdcpp20</LanguageStandard>
@@ -189,18 +192,18 @@
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <SupportJustMyCode></SupportJustMyCode>
       <UseFullPaths>false</UseFullPaths>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;PLATFORM_WINDOWS;CMAKE_INTDIR="MinSizeRel"</PreprocessorDefinitions>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;PLATFORM_WINDOWS;JPH_CROSS_PLATFORM_DETERMINISTIC;JPH_USE_AVX2;JPH_USE_AVX;JPH_USE_SSE4_1;JPH_USE_SSE4_2;JPH_USE_LZCNT;JPH_USE_TZCNT;JPH_USE_F16C;CMAKE_INTDIR="MinSizeRel"</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
       <DebugInformationFormat>
       </DebugInformationFormat>
       <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
     </ClCompile>
     <ResourceCompile>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;PLATFORM_WINDOWS;CMAKE_INTDIR=\"MinSizeRel\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Engine\core\jobs;C:\Engine\core\platform;C:\Engine\core;C:\Engine\core\memory;C:\Engine\core\console;C:\Engine\core\math;C:\Engine\render;C:\Engine\build\_deps\entt-src\src;C:\Engine\build\_deps\imgui-src;C:\Engine\build\_deps\imgui-src\backends;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;PLATFORM_WINDOWS;JPH_CROSS_PLATFORM_DETERMINISTIC;JPH_USE_AVX2;JPH_USE_AVX;JPH_USE_SSE4_1;JPH_USE_SSE4_2;JPH_USE_LZCNT;JPH_USE_TZCNT;JPH_USE_F16C;CMAKE_INTDIR=\"MinSizeRel\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Engine\core\jobs;C:\Engine\core\platform;C:\Engine\core;C:\Engine\core\memory;C:\Engine\core\console;C:\Engine\core\math;C:\Engine\render;C:\Engine\thirdparty\cgltf;C:\Engine\physics;C:\Engine\build\_deps\joltphysics-src;C:\Engine\build\_deps\entt-src\src;C:\Engine\build\_deps\joltphysics-src\Build\..;C:\Engine\build\_deps\imgui-src;C:\Engine\build\_deps\imgui-src\backends;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\Engine\core\jobs;C:\Engine\core\platform;C:\Engine\core;C:\Engine\core\memory;C:\Engine\core\console;C:\Engine\core\math;C:\Engine\render;C:\Engine\build\_deps\entt-src\src;C:\Engine\build\_deps\imgui-src;C:\Engine\build\_deps\imgui-src\backends;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Engine\core\jobs;C:\Engine\core\platform;C:\Engine\core;C:\Engine\core\memory;C:\Engine\core\console;C:\Engine\core\math;C:\Engine\render;C:\Engine\thirdparty\cgltf;C:\Engine\physics;C:\Engine\build\_deps\joltphysics-src;C:\Engine\build\_deps\entt-src\src;C:\Engine\build\_deps\joltphysics-src\Build\..;C:\Engine\build\_deps\imgui-src;C:\Engine\build\_deps\imgui-src\backends;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -208,7 +211,7 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <Link>
-      <AdditionalDependencies>..\core\jobs\MinSizeRel\EngineJobs.lib;..\core\console\MinSizeRel\EngineConsole.lib;..\render\MinSizeRel\EngineRender.lib;..\MinSizeRel\ImGui.lib;d3d11.lib;d3dcompiler.lib;dxguid.lib;winmm.lib;..\core\console\MinSizeRel\EngineConsole.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalDependencies>..\core\jobs\MinSizeRel\EngineJobs.lib;..\core\console\MinSizeRel\EngineConsole.lib;..\render\MinSizeRel\EngineRender.lib;..\physics\MinSizeRel\EnginePhysics.lib;..\MinSizeRel\ImGui.lib;d3d11.lib;d3dcompiler.lib;dxguid.lib;winmm.lib;comdlg32.lib;..\core\console\MinSizeRel\EngineConsole.lib;..\_deps\joltphysics-build\MinSizeRel\Jolt.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>false</GenerateDebugInformation>
@@ -223,10 +226,11 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Engine\core\jobs;C:\Engine\core\platform;C:\Engine\core;C:\Engine\core\memory;C:\Engine\core\console;C:\Engine\core\math;C:\Engine\render;C:\Engine\build\_deps\entt-src\src;C:\Engine\build\_deps\imgui-src;C:\Engine\build\_deps\imgui-src\backends;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Engine\core\jobs;C:\Engine\core\platform;C:\Engine\core;C:\Engine\core\memory;C:\Engine\core\console;C:\Engine\core\math;C:\Engine\render;C:\Engine\thirdparty\cgltf;C:\Engine\physics;C:\Engine\build\_deps\joltphysics-src;C:\Engine\build\_deps\entt-src\src;C:\Engine\build\_deps\joltphysics-src\Build\..;C:\Engine\build\_deps\imgui-src;C:\Engine\build\_deps\imgui-src\backends;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <EnableEnhancedInstructionSet>AdvancedVectorExtensions2</EnableEnhancedInstructionSet>
       <ExceptionHandling>Sync</ExceptionHandling>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <LanguageStandard>stdcpp20</LanguageStandard>
@@ -236,16 +240,16 @@
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <SupportJustMyCode></SupportJustMyCode>
       <UseFullPaths>false</UseFullPaths>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;PLATFORM_WINDOWS;CMAKE_INTDIR="RelWithDebInfo"</PreprocessorDefinitions>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;PLATFORM_WINDOWS;JPH_CROSS_PLATFORM_DETERMINISTIC;JPH_USE_AVX2;JPH_USE_AVX;JPH_USE_SSE4_1;JPH_USE_SSE4_2;JPH_USE_LZCNT;JPH_USE_TZCNT;JPH_USE_F16C;CMAKE_INTDIR="RelWithDebInfo"</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
       <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
     </ClCompile>
     <ResourceCompile>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;PLATFORM_WINDOWS;CMAKE_INTDIR=\"RelWithDebInfo\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Engine\core\jobs;C:\Engine\core\platform;C:\Engine\core;C:\Engine\core\memory;C:\Engine\core\console;C:\Engine\core\math;C:\Engine\render;C:\Engine\build\_deps\entt-src\src;C:\Engine\build\_deps\imgui-src;C:\Engine\build\_deps\imgui-src\backends;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;PLATFORM_WINDOWS;JPH_CROSS_PLATFORM_DETERMINISTIC;JPH_USE_AVX2;JPH_USE_AVX;JPH_USE_SSE4_1;JPH_USE_SSE4_2;JPH_USE_LZCNT;JPH_USE_TZCNT;JPH_USE_F16C;CMAKE_INTDIR=\"RelWithDebInfo\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Engine\core\jobs;C:\Engine\core\platform;C:\Engine\core;C:\Engine\core\memory;C:\Engine\core\console;C:\Engine\core\math;C:\Engine\render;C:\Engine\thirdparty\cgltf;C:\Engine\physics;C:\Engine\build\_deps\joltphysics-src;C:\Engine\build\_deps\entt-src\src;C:\Engine\build\_deps\joltphysics-src\Build\..;C:\Engine\build\_deps\imgui-src;C:\Engine\build\_deps\imgui-src\backends;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\Engine\core\jobs;C:\Engine\core\platform;C:\Engine\core;C:\Engine\core\memory;C:\Engine\core\console;C:\Engine\core\math;C:\Engine\render;C:\Engine\build\_deps\entt-src\src;C:\Engine\build\_deps\imgui-src;C:\Engine\build\_deps\imgui-src\backends;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Engine\core\jobs;C:\Engine\core\platform;C:\Engine\core;C:\Engine\core\memory;C:\Engine\core\console;C:\Engine\core\math;C:\Engine\render;C:\Engine\thirdparty\cgltf;C:\Engine\physics;C:\Engine\build\_deps\joltphysics-src;C:\Engine\build\_deps\entt-src\src;C:\Engine\build\_deps\joltphysics-src\Build\..;C:\Engine\build\_deps\imgui-src;C:\Engine\build\_deps\imgui-src\backends;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -253,7 +257,7 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <Link>
-      <AdditionalDependencies>..\core\jobs\RelWithDebInfo\EngineJobs.lib;..\core\console\RelWithDebInfo\EngineConsole.lib;..\render\RelWithDebInfo\EngineRender.lib;..\RelWithDebInfo\ImGui.lib;d3d11.lib;d3dcompiler.lib;dxguid.lib;winmm.lib;..\core\console\RelWithDebInfo\EngineConsole.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalDependencies>..\core\jobs\RelWithDebInfo\EngineJobs.lib;..\core\console\RelWithDebInfo\EngineConsole.lib;..\render\RelWithDebInfo\EngineRender.lib;..\physics\RelWithDebInfo\EnginePhysics.lib;..\RelWithDebInfo\ImGui.lib;d3d11.lib;d3dcompiler.lib;dxguid.lib;winmm.lib;comdlg32.lib;..\core\console\RelWithDebInfo\EngineConsole.lib;..\_deps\joltphysics-build\RelWithDebInfo\Jolt.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -342,6 +346,10 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <Project>{AACE925B-8406-3782-824F-04C6D33BB71D}</Project>
       <Name>EngineJobs</Name>
     </ProjectReference>
+    <ProjectReference Include="C:\Engine\build\physics\EnginePhysics.vcxproj">
+      <Project>{A5D345EE-3E70-3C9F-A258-2BCE5D2EA137}</Project>
+      <Name>EnginePhysics</Name>
+    </ProjectReference>
     <ProjectReference Include="C:\Engine\build\render\EngineRender.vcxproj">
       <Project>{147B4D30-AE47-3FF6-9468-EBB0A23D981B}</Project>
       <Name>EngineRender</Name>
@@ -349,6 +357,10 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ProjectReference Include="C:\Engine\build\ImGui.vcxproj">
       <Project>{E9815209-C0FA-3BA9-9555-DD1D7E290921}</Project>
       <Name>ImGui</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Engine\build\_deps\joltphysics-build\Jolt.vcxproj">
+      <Project>{7C47852C-9F74-3082-98DC-1C2847D872A0}</Project>
+      <Name>Jolt</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

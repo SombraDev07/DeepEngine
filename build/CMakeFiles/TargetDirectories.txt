@@ -22,6 +22,9 @@ C:/Engine/build/core/console/CMakeFiles/EngineConsole.dir
 C:/Engine/build/core/console/CMakeFiles/INSTALL.dir
 C:/Engine/build/physics/CMakeFiles/EnginePhysics.dir
 C:/Engine/build/physics/CMakeFiles/INSTALL.dir
+C:/Engine/build/_deps/joltphysics-build/CMakeFiles/Jolt.dir
+C:/Engine/build/_deps/joltphysics-build/CMakeFiles/INSTALL.dir
+C:/Engine/build/_deps/joltphysics-build/CMakeFiles/ALL_BUILD.dir
 C:/Engine/build/render/CMakeFiles/EngineRender.dir
 C:/Engine/build/render/CMakeFiles/INSTALL.dir
 C:/Engine/build/tests/CMakeFiles/EngineTest.dir

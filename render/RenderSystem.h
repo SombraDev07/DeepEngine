@@ -19,6 +19,7 @@ public:
 	void BeginFrame();
 	void EndFrame();
 	void RenderViewport(const Camera& cam, ID3D11ShaderResourceView** outSRV);
+	void RenderSky(const Camera& cam);
 
 	void DrawGrid(const Camera& cam);
 	void DrawWireCube(const Vec3& pos, const Vec3& scale, const Vec3& color);
@@ -35,6 +36,9 @@ private:
 	// Wire shaders
 	ID3D11VertexShader* m_wireVS = nullptr;
 	ID3D11PixelShader*  m_wirePS = nullptr;
+	ID3D11VertexShader* m_skyVS = nullptr;
+	ID3D11PixelShader*  m_skyPS = nullptr;
+	ID3D11Buffer*       m_cbSky = nullptr;
 	ID3D11InputLayout*  m_wireLayout = nullptr;
 	ID3D11Buffer*       m_cbCamera = nullptr;
 

@@ -78,7 +78,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Engine\render;C:\Engine\core\math;C:\Engine\core\platform;C:\Engine\core;C:\Engine\core\console;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Engine\render;C:\Engine\thirdparty\cgltf;C:\Engine\core\math;C:\Engine\core\platform;C:\Engine\core;C:\Engine\core\console;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -97,10 +97,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;PLATFORM_WINDOWS;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Engine\render;C:\Engine\core\math;C:\Engine\core\platform;C:\Engine\core;C:\Engine\core\console;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Engine\render;C:\Engine\thirdparty\cgltf;C:\Engine\core\math;C:\Engine\core\platform;C:\Engine\core;C:\Engine\core\console;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\Engine\render;C:\Engine\core\math;C:\Engine\core\platform;C:\Engine\core;C:\Engine\core\console;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Engine\render;C:\Engine\thirdparty\cgltf;C:\Engine\core\math;C:\Engine\core\platform;C:\Engine\core;C:\Engine\core\console;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -113,7 +113,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Engine\render;C:\Engine\core\math;C:\Engine\core\platform;C:\Engine\core;C:\Engine\core\console;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Engine\render;C:\Engine\thirdparty\cgltf;C:\Engine\core\math;C:\Engine\core\platform;C:\Engine\core;C:\Engine\core\console;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
       <ExceptionHandling>Sync</ExceptionHandling>
@@ -133,10 +133,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;PLATFORM_WINDOWS;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Engine\render;C:\Engine\core\math;C:\Engine\core\platform;C:\Engine\core;C:\Engine\core\console;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Engine\render;C:\Engine\thirdparty\cgltf;C:\Engine\core\math;C:\Engine\core\platform;C:\Engine\core;C:\Engine\core\console;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\Engine\render;C:\Engine\core\math;C:\Engine\core\platform;C:\Engine\core;C:\Engine\core\console;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Engine\render;C:\Engine\thirdparty\cgltf;C:\Engine\core\math;C:\Engine\core\platform;C:\Engine\core;C:\Engine\core\console;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -149,7 +149,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Engine\render;C:\Engine\core\math;C:\Engine\core\platform;C:\Engine\core;C:\Engine\core\console;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Engine\render;C:\Engine\thirdparty\cgltf;C:\Engine\core\math;C:\Engine\core\platform;C:\Engine\core;C:\Engine\core\console;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
       <ExceptionHandling>Sync</ExceptionHandling>
@@ -169,10 +169,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;PLATFORM_WINDOWS;CMAKE_INTDIR=\"MinSizeRel\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Engine\render;C:\Engine\core\math;C:\Engine\core\platform;C:\Engine\core;C:\Engine\core\console;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Engine\render;C:\Engine\thirdparty\cgltf;C:\Engine\core\math;C:\Engine\core\platform;C:\Engine\core;C:\Engine\core\console;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\Engine\render;C:\Engine\core\math;C:\Engine\core\platform;C:\Engine\core;C:\Engine\core\console;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Engine\render;C:\Engine\thirdparty\cgltf;C:\Engine\core\math;C:\Engine\core\platform;C:\Engine\core;C:\Engine\core\console;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -185,7 +185,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Engine\render;C:\Engine\core\math;C:\Engine\core\platform;C:\Engine\core;C:\Engine\core\console;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Engine\render;C:\Engine\thirdparty\cgltf;C:\Engine\core\math;C:\Engine\core\platform;C:\Engine\core;C:\Engine\core\console;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -204,10 +204,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;PLATFORM_WINDOWS;CMAKE_INTDIR=\"RelWithDebInfo\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Engine\render;C:\Engine\core\math;C:\Engine\core\platform;C:\Engine\core;C:\Engine\core\console;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Engine\render;C:\Engine\thirdparty\cgltf;C:\Engine\core\math;C:\Engine\core\platform;C:\Engine\core;C:\Engine\core\console;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\Engine\render;C:\Engine\core\math;C:\Engine\core\platform;C:\Engine\core;C:\Engine\core\console;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Engine\render;C:\Engine\thirdparty\cgltf;C:\Engine\core\math;C:\Engine\core\platform;C:\Engine\core;C:\Engine\core\console;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -279,6 +279,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="C:\Engine\render\RenderSystem.cpp" />
     <ClCompile Include="C:\Engine\render\Camera.cpp" />
     <ClCompile Include="C:\Engine\render\Mesh.cpp" />
+    <ClCompile Include="C:\Engine\render\cgltf_impl.cpp" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

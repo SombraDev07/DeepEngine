@@ -202,6 +202,10 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <Project>{E9815209-C0FA-3BA9-9555-DD1D7E290921}</Project>
       <Name>ImGui</Name>
     </ProjectReference>
+    <ProjectReference Include="C:\Engine\build\_deps\joltphysics-build\Jolt.vcxproj">
+      <Project>{7C47852C-9F74-3082-98DC-1C2847D872A0}</Project>
+      <Name>Jolt</Name>
+    </ProjectReference>
     <ProjectReference Include="C:\Engine\build\_deps\miniaudio-build\miniaudio.vcxproj">
       <Project>{256A52EC-3666-3F00-AD13-1CF9886F10E6}</Project>
       <Name>miniaudio</Name>

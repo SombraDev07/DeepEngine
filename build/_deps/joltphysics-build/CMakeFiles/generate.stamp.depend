@@ -1,0 +1,5 @@
+# CMake generation dependency list for this directory.
+C:/Engine/build/_deps/joltphysics-src/Build/CMakeLists.txt
+C:/Engine/build/_deps/joltphysics-src/Jolt/Jolt.cmake
+C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.31/Modules/CMakeDependentOption.cmake
+C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.31/Modules/CheckIPOSupported.cmake

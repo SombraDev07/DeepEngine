@@ -25,6 +25,7 @@ public:
 	}
 	JPH::uint GetNumBroadPhaseLayers() const override { return Layers::NUM_BP_LAYERS; }
 	JPH::BroadPhaseLayer GetBroadPhaseLayer(JPH::ObjectLayer layer) const override { return mMapping[layer]; }
+	const char* GetBroadPhaseLayerName(JPH::BroadPhaseLayer layer) const override { return layer == Layers::BP_NON_MOVING ? "NON_MOVING" : "MOVING"; }
 private:
 	JPH::BroadPhaseLayer mMapping[Layers::NUM_LAYERS];
 };

@@ -41,14 +41,16 @@ target_link_libraries(ImGui PUBLIC d3d11 d3dcompiler)
 message(STATUS "ImGui: ${imgui_SOURCE_DIR}")
 
 # --- Jolt Physics ---
+# --- Jolt Physics (downloaded via FetchContent, built via add_subdirectory in physics/) ---
 FetchContent_Declare(JoltPhysics
 	GIT_REPOSITORY  https://github.com/jrouwe/JoltPhysics.git
 	GIT_TAG         v5.0.0
 	GIT_SHALLOW     TRUE
 )
-set(USE_STATIC_MSVC_RUNTIME_LIBRARY OFF)
-set(ENABLE_ALL_WARNINGS OFF)
-FetchContent_MakeAvailable(JoltPhysics)
+FetchContent_GetProperties(JoltPhysics)
+if(NOT joltphysics_POPULATED)
+	FetchContent_Populate(JoltPhysics)
+endif()
 message(STATUS "JoltPhysics: ${joltphysics_SOURCE_DIR}")
 
 # --- MiniAudio (header-only) ---
