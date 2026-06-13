@@ -323,3 +323,23 @@ void RenderSystem::RenderSky(const Camera& cam)
 	m_ctx->OMSetRenderTargets(1, &m_viewportRTV, nullptr); // no depth - sky always visible
 	m_ctx->Draw(3, 0);
 }
+
+void RenderSystem::DrawMeshCached(const Mesh& mesh, const Camera& cam, const Vec3& pos, const Vec3& scale, const Vec3& color)
+{
+	if (!mesh.GetVB() || !mesh.GetIB()) return;
+	ID3D11Buffer* vb = mesh.GetVB(); ID3D11Buffer* ib = mesh.GetIB();
+	UINT s = sizeof(MeshVertex), o = 0;
+	m_ctx->IASetVertexBuffers(0, 1, &vb, &s, &o); m_ctx->IASetIndexBuffer(ib, DXGI_FORMAT_R32_UINT, 0);
+	m_ctx->IASetInputLayout(m_litLayout); m_ctx->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+	m_ctx->VSSetShader(m_litVS, nullptr, 0); m_ctx->PSSetShader(m_litPS, nullptr, 0);
+	XMMATRIX v = XMLoadFloat4x4((XMFLOAT4X4*)cam.viewMatrix.m), p2 = XMLoadFloat4x4((XMFLOAT4X4*)cam.projMatrix.m);
+	XMMATRIX vp = XMMatrixMultiply(v, p2); vp = XMMatrixTranspose(vp);
+	CameraCB camCB; camCB.viewProj = vp;
+	m_ctx->UpdateSubresource(m_cbCamera, 0, nullptr, &camCB, 0, 0); m_ctx->VSSetConstantBuffers(0, 1, &m_cbCamera);
+	XMMATRIX w = XMMatrixScaling(scale.x, scale.y, scale.z);
+	LightCB lit = {}; lit.world = XMMatrixTranspose(w); lit.lightDir = {-0.4f, -0.8f, -0.4f}; lit.objectColor = {color.x, color.y, color.z};
+	m_ctx->UpdateSubresource(m_cbLighting, 0, nullptr, &lit, 0, 0); m_ctx->VSSetConstantBuffers(1, 1, &m_cbLighting);
+	D3D11_VIEWPORT dv = {0,0,(float)m_width,(float)m_height,0,1}; m_ctx->RSSetViewports(1, &dv);
+	m_ctx->OMSetRenderTargets(1, &m_viewportRTV, m_viewportDSV);
+	m_ctx->DrawIndexed((UINT)mesh.indices.size(), 0, 0);
+}

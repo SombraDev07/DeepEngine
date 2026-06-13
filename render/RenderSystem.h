@@ -24,6 +24,7 @@ public:
 	void DrawGrid(const Camera& cam);
 	void DrawWireCube(const Vec3& pos, const Vec3& scale, const Vec3& color);
 	void DrawMesh(const Mesh& mesh, const Vec3& pos, const Vec3& scale, const Vec3& color);
+	void DrawMeshCached(const Mesh& mesh, const Camera& cam, const Vec3& pos, const Vec3& scale, const Vec3& color);
 	void FlushWire(const Camera& cam);
 	void FlushLit(const Camera& cam);
 
