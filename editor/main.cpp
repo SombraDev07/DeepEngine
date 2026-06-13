@@ -10,6 +10,7 @@
 #include <JobSystem.h>
 #include <RenderSystem.h>
 #include <Mesh.h>
+#include <Terrain.h>
 #include <PhysicsSystem.h>
 #include <thread>
 #include <cmath>
@@ -36,6 +37,9 @@ static Mesh* g_loadedMesh = nullptr;
 static Vec3 g_loadedPos(0, 5, 0);
 static float g_loadedScale = 0.1f;
 static std::string g_loadedName;
+static Terrain g_terrain;
+static Mesh g_terrainMesh;
+static bool g_terrainUploaded = false;
 static bool g_showSky = true;
 
 bool MakeDevice(HWND h) {
@@ -71,6 +75,19 @@ int WINAPI WinMain(HINSTANCE hInst, HINSTANCE, LPSTR, int nShow) {
 	ImGui_ImplWin32_Init(hwnd); ImGui_ImplDX11_Init(g_dev, g_ctx);
 	g_render = new RenderSystem(); g_render->Init(g_dev, 1600, 900);
 	g_phys = new PhysicsSystem(); g_phys->Init();
+
+	// Generate terrain
+	g_terrain.width = 128; g_terrain.depth = 128; g_terrain.size = 120.0f; g_terrain.maxHeight = 12.0f;
+	g_terrain.Generate();
+	g_terrainMesh.vertices.resize(g_terrain.vertices.size());
+	for (size_t i = 0; i < g_terrain.vertices.size(); ++i) {
+		g_terrainMesh.vertices[i].pos = g_terrain.vertices[i].pos;
+		g_terrainMesh.vertices[i].normal = g_terrain.vertices[i].normal;
+		g_terrainMesh.vertices[i].color = g_terrain.vertices[i].color;
+	}
+	g_terrainMesh.indices = g_terrain.indices;
+	g_terrainMesh.UploadToGPU(g_dev);
+	g_terrainUploaded = true;
 	g_cam.position = Vec3(0, 5, 10);
 	g_cam.pitch = -0.4f;
 
@@ -90,6 +107,7 @@ int WINAPI WinMain(HINSTANCE hInst, HINSTANCE, LPSTR, int nShow) {
 		if (g_render) {
 			g_render->BeginFrame();
 			g_render->RenderSky(g_cam); // Sky first (background)
+			if (g_terrainUploaded) g_render->DrawMeshCached(g_terrainMesh, g_cam, Vec3(0,0,0), Vec3(1), Vec3(1,1,1));
 			for (auto e : g_ents) { auto& t = ECS::Get<TransformComponent>(e); g_render->DrawMesh(*MeshCache::Get().GetCube(), t.position, Vec3(1), Vec3(0.3f + ((u32)e%7)*0.1f, 0.4f + ((u32)e%5)*0.1f, 0.6f + ((u32)e%3)*0.1f)); }
 			if (g_loadedMesh) g_render->DrawMeshCached(*g_loadedMesh, g_cam, g_loadedPos, Vec3(g_loadedScale), Vec3(1,1,1));
 			g_render->FlushLit(g_cam);
@@ -104,17 +122,57 @@ int WINAPI WinMain(HINSTANCE hInst, HINSTANCE, LPSTR, int nShow) {
 		ImGui::SetNextWindowPos(ImVec2(0, 18)); ImGui::SetNextWindowSize(ImVec2(ImGui::GetIO().DisplaySize.x, ImGui::GetIO().DisplaySize.y - 18));
 		if (ImGui::Begin("##VP", 0, ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoBringToFrontOnFocus)) {
 			bool hov = ImGui::IsWindowHovered();
-			if (hov && ImGui::IsMouseDown(ImGuiMouseButton_Right)) { auto d = ImGui::GetMouseDragDelta(ImGuiMouseButton_Right); g_cam.yaw -= d.x * 0.003f; g_cam.pitch -= d.y * 0.003f; g_cam.pitch = std::max(-1.3f, std::min(1.3f, g_cam.pitch)); ImGui::ResetMouseDragDelta(); }
+
+			// Modifier keys
+			bool alt = ImGui::IsKeyDown(ImGuiKey_LeftAlt) || ImGui::IsKeyDown(ImGuiKey_RightAlt);
+
+			// Right-click: orbit (with Alt) or free rotate
+			if (hov && ImGui::IsMouseDown(ImGuiMouseButton_Right)) {
+				auto d = ImGui::GetMouseDragDelta(ImGuiMouseButton_Right);
+				if (alt) {
+					// Orbit mode around target
+					g_cam.bOrbit = true;
+					g_cam.orbitTarget = g_cam.position + Vec3(cosf(g_cam.pitch)*sinf(g_cam.yaw), sinf(g_cam.pitch), cosf(g_cam.pitch)*cosf(g_cam.yaw)) * g_cam.orbitDist;
+					g_cam.yaw -= d.x * 0.003f;
+					g_cam.pitch -= d.y * 0.003f;
+				} else {
+					g_cam.bOrbit = false;
+					g_cam.yaw -= d.x * 0.003f;
+					g_cam.pitch -= d.y * 0.003f;
+				}
+				g_cam.pitch = std::max(-1.3f, std::min(1.3f, g_cam.pitch));
+				ImGui::ResetMouseDragDelta(ImGuiMouseButton_Right);
+			}
+
+			// Middle-click: pan
+			if (hov && ImGui::IsMouseDown(ImGuiMouseButton_Middle)) {
+				auto d = ImGui::GetMouseDragDelta(ImGuiMouseButton_Middle);
+				Vec3 r(-cosf(g_cam.yaw), 0, sinf(g_cam.yaw));
+				Vec3 u(0, 1, 0);
+				g_cam.position = g_cam.position - r * (d.x * 0.01f) - u * (-d.y * 0.01f);
+				if (g_cam.bOrbit) g_cam.orbitTarget = g_cam.orbitTarget - r * (d.x * 0.01f) - u * (-d.y * 0.01f);
+				ImGui::ResetMouseDragDelta(ImGuiMouseButton_Middle);
+			}
+
+			// Scroll: zoom / dolly
+			float wheel = ImGui::GetIO().MouseWheel;
+			if (hov && wheel != 0) {
+				Vec3 fwd(cosf(g_cam.pitch)*sinf(g_cam.yaw), sinf(g_cam.pitch), cosf(g_cam.pitch)*cosf(g_cam.yaw));
+				g_cam.position = g_cam.position + fwd * wheel * 2.0f;
+				if (g_cam.bOrbit) g_cam.orbitDist = std::max(0.5f, g_cam.orbitDist - wheel * 2.0f);
+			}
+
+			// WASD movement
 			float spd = 5.0f * dt; if (ImGui::IsKeyDown(ImGuiKey_LeftShift)) spd *= 3.0f;
-			Vec3 fwd(cosf(g_cam.pitch) * sinf(g_cam.yaw), 0, cosf(g_cam.pitch) * cosf(g_cam.yaw));
-			Vec3 rgt(-fwd.z, 0, fwd.x); Vec3 up(0, 1, 0); fwd = fwd.Normalized(); rgt = rgt.Normalized();
+			Vec3 fwd2(cosf(g_cam.pitch) * sinf(g_cam.yaw), 0, cosf(g_cam.pitch) * cosf(g_cam.yaw));
+			Vec3 rgt(-fwd2.z, 0, fwd2.x); Vec3 up2(0, 1, 0); fwd2 = fwd2.Normalized(); rgt = rgt.Normalized();
 			if (hov || ImGui::IsWindowFocused(ImGuiFocusedFlags_AnyWindow)) {
-				if (ImGui::IsKeyDown(ImGuiKey_W)) g_cam.position = g_cam.position + fwd * spd;
-				if (ImGui::IsKeyDown(ImGuiKey_S)) g_cam.position = g_cam.position - fwd * spd;
-				if (ImGui::IsKeyDown(ImGuiKey_A)) g_cam.position = g_cam.position - rgt * spd;
-				if (ImGui::IsKeyDown(ImGuiKey_D)) g_cam.position = g_cam.position + rgt * spd;
-				if (ImGui::IsKeyDown(ImGuiKey_Q)) g_cam.position = g_cam.position - up * spd;
-				if (ImGui::IsKeyDown(ImGuiKey_E)) g_cam.position = g_cam.position + up * spd;
+				if (ImGui::IsKeyDown(ImGuiKey_W)) { g_cam.position = g_cam.position + fwd2 * spd; if (g_cam.bOrbit) g_cam.orbitTarget = g_cam.orbitTarget + fwd2 * spd; }
+				if (ImGui::IsKeyDown(ImGuiKey_S)) { g_cam.position = g_cam.position - fwd2 * spd; if (g_cam.bOrbit) g_cam.orbitTarget = g_cam.orbitTarget - fwd2 * spd; }
+				if (ImGui::IsKeyDown(ImGuiKey_A)) { g_cam.position = g_cam.position - rgt * spd;  if (g_cam.bOrbit) g_cam.orbitTarget = g_cam.orbitTarget - rgt * spd; }
+				if (ImGui::IsKeyDown(ImGuiKey_D)) { g_cam.position = g_cam.position + rgt * spd;  if (g_cam.bOrbit) g_cam.orbitTarget = g_cam.orbitTarget + rgt * spd; }
+				if (ImGui::IsKeyDown(ImGuiKey_Q)) { g_cam.position = g_cam.position - up2 * spd; if (g_cam.bOrbit) g_cam.orbitTarget = g_cam.orbitTarget - up2 * spd; }
+				if (ImGui::IsKeyDown(ImGuiKey_E)) { g_cam.position = g_cam.position + up2 * spd; if (g_cam.bOrbit) g_cam.orbitTarget = g_cam.orbitTarget + up2 * spd; }
 			}
 			ImVec2 avail = ImGui::GetContentRegionAvail(); g_cam.aspect = avail.x / std::max(avail.y, 1.0f); g_cam.Update();
 			if (g_srv) ImGui::Image((ImTextureID)g_srv, avail);

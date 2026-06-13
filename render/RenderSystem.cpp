@@ -142,7 +142,7 @@ void RenderSystem::FlushWire(const Camera& cam)
 
 	XMMATRIX v = XMLoadFloat4x4((XMFLOAT4X4*)cam.viewMatrix.m);
 	XMMATRIX p = XMLoadFloat4x4((XMFLOAT4X4*)cam.projMatrix.m);
-	XMMATRIX vp = XMMatrixMultiply(v, p); vp = XMMatrixTranspose(vp);
+	XMMATRIX vp = XMMatrixMultiply(v, p);
 	CameraCB cb;
 	cb.viewProj = vp;
 	m_ctx->UpdateSubresource(m_cbCamera, 0, nullptr, &cb, 0, 0);
@@ -171,13 +171,13 @@ void RenderSystem::FlushLit(const Camera& cam)
 
 	XMMATRIX v = XMLoadFloat4x4((XMFLOAT4X4*)cam.viewMatrix.m);
 	XMMATRIX p = XMLoadFloat4x4((XMFLOAT4X4*)cam.projMatrix.m);
-	XMMATRIX vp = XMMatrixMultiply(v, p); vp = XMMatrixTranspose(vp);
+	XMMATRIX vp = XMMatrixMultiply(v, p);
 	CameraCB camCB;
 	camCB.viewProj = vp;
 	m_ctx->UpdateSubresource(m_cbCamera, 0, nullptr, &camCB, 0, 0);
 	m_ctx->VSSetConstantBuffers(0, 1, &m_cbCamera);
 
-	XMMATRIX world = XMMatrixIdentity(); world = XMMatrixTranspose(world);
+	XMMATRIX world = XMMatrixIdentity();
 	LightCB lit = {};
 	lit.world = world;
 	lit.lightDir = {-0.4f, -0.8f, -0.4f};
@@ -353,11 +353,11 @@ void RenderSystem::DrawMeshCached(const Mesh& mesh, const Camera& cam, const Vec
 	m_ctx->IASetInputLayout(m_litLayout); m_ctx->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 	m_ctx->VSSetShader(m_litVS, nullptr, 0); m_ctx->PSSetShader(m_litPS, nullptr, 0);
 	XMMATRIX v = XMLoadFloat4x4((XMFLOAT4X4*)cam.viewMatrix.m), p2 = XMLoadFloat4x4((XMFLOAT4X4*)cam.projMatrix.m);
-	XMMATRIX vp = XMMatrixMultiply(v, p2); vp = XMMatrixTranspose(vp);
+	XMMATRIX vp = XMMatrixMultiply(v, p2);
 	CameraCB camCB; camCB.viewProj = vp;
 	m_ctx->UpdateSubresource(m_cbCamera, 0, nullptr, &camCB, 0, 0); m_ctx->VSSetConstantBuffers(0, 1, &m_cbCamera);
 	XMMATRIX w = XMMatrixScaling(scale.x, scale.y, scale.z);
-	LightCB lit = {}; lit.world = XMMatrixTranspose(w); lit.lightDir = {-0.4f, -0.8f, -0.4f}; lit.objectColor = {color.x, color.y, color.z};
+	LightCB lit = {}; lit.world = w; lit.lightDir = {-0.4f, -0.8f, -0.4f}; lit.objectColor = {color.x, color.y, color.z};
 	m_ctx->UpdateSubresource(m_cbLighting, 0, nullptr, &lit, 0, 0); m_ctx->VSSetConstantBuffers(1, 1, &m_cbLighting);
 	D3D11_VIEWPORT dv = {0,0,(float)m_width,(float)m_height,0,1}; m_ctx->RSSetViewports(1, &dv);
 	m_ctx->OMSetRenderTargets(1, &m_viewportRTV, m_viewportDSV);
@@ -376,7 +376,7 @@ void RenderSystem::RenderShadowMap(const Camera& cam)
 	XMVECTOR lp = XMVectorSet(20,30,10,1), lt = XMVectorZero(), up = XMVectorSet(0,1,0,0);
 	XMMATRIX lv = XMMatrixLookAtLH(lp,lt,up);
 	XMMATRIX lp2 = XMMatrixOrthographicLH(60,60,1,100);
-	XMMATRIX vp = XMMatrixMultiply(lv,lp2); vp = XMMatrixTranspose(vp);
+	XMMATRIX vp = XMMatrixMultiply(lv,lp2);
 	CameraCB cb; cb.viewProj = vp;
 	m_ctx->UpdateSubresource(m_cbCamera,0,nullptr,&cb,0,0);
 	m_ctx->VSSetConstantBuffers(0,1,&m_cbCamera);
