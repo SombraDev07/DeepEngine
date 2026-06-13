@@ -1,0 +1,7 @@
+# CryEngine study folder
+/Study_Cry/
+
+# Editor temp files
+/imgui.ini
+/stdout.txt
+/stderr.txt
