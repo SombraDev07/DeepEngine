@@ -89,6 +89,7 @@ int WINAPI WinMain(HINSTANCE hInst, HINSTANCE, LPSTR, int nShow) {
 
 		if (g_render) {
 			g_render->BeginFrame();
+			g_render->RenderSky(g_cam); // Sky first (background)
 			for (auto e : g_ents) { auto& t = ECS::Get<TransformComponent>(e); g_render->DrawMesh(*MeshCache::Get().GetCube(), t.position, Vec3(1), Vec3(0.3f + ((u32)e%7)*0.1f, 0.4f + ((u32)e%5)*0.1f, 0.6f + ((u32)e%3)*0.1f)); }
 			if (g_loadedMesh) g_render->DrawMeshCached(*g_loadedMesh, g_cam, g_loadedPos, Vec3(g_loadedScale), Vec3(1,1,1));
 			g_render->FlushLit(g_cam);

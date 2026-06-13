@@ -1,6 +1,6 @@
 ^C:\ENGINE\CORE\JOBS\CMAKELISTS.TXT
 setlocal
-"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:/Engine -BC:/Engine/build --check-stamp-file C:/Engine/build/core/jobs/CMakeFiles/generate.stamp
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -SC:/Engine -BC:/Engine/build --check-stamp-file C:/Engine/build/core/jobs/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone

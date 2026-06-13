@@ -1,6 +1,6 @@
 ^C:\ENGINE\BUILD\_DEPS\JOLTPHYSICS-SUBBUILD\CMAKEFILES\F1B167279950DFCB732839DE628B1896\GENERATE.STAMP.RULE
 setlocal
-"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:/Engine/build/_deps/joltphysics-subbuild -BC:/Engine/build/_deps/joltphysics-subbuild --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Engine/build/_deps/joltphysics-subbuild/joltphysics-populate.sln
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -SC:/Engine/build/_deps/joltphysics-subbuild -BC:/Engine/build/_deps/joltphysics-subbuild --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Engine/build/_deps/joltphysics-subbuild/joltphysics-populate.sln
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone

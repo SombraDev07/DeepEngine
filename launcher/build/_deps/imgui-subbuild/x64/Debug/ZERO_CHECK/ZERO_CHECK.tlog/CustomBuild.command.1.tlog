@@ -1,0 +1,10 @@
+^C:\ENGINE\LAUNCHER\BUILD\_DEPS\IMGUI-SUBBUILD\CMAKEFILES\FE7AF979D8FD74DEF48EC567F63D6F9C\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:/Engine/launcher/build/_deps/imgui-subbuild -BC:/Engine/launcher/build/_deps/imgui-subbuild --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Engine/launcher/build/_deps/imgui-subbuild/imgui-populate.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

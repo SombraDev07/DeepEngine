@@ -1,8 +1,20 @@
-^C:\ENGINE\BUILD\_DEPS\MINIAUDIO-SUBBUILD\CMAKEFILES\8BEE50B92820B370347BF0B313F7D1CA\MINIAUDIO-POPULATE-MKDIR.RULE
+^C:\ENGINE\BUILD\_DEPS\MINIAUDIO-SUBBUILD\CMAKEFILES\6F48E7E207D8B23A8EB04C491336461F\MINIAUDIO-POPULATE-MKDIR.RULE
 setlocal
-"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -Dcfgdir=/Debug -P C:/Engine/build/_deps/miniaudio-subbuild/miniaudio-populate-prefix/tmp/miniaudio-populate-mkdirs.cmake
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E make_directory C:/Engine/build/_deps/miniaudio-src
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch C:/Engine/build/_deps/miniaudio-subbuild/miniaudio-populate-prefix/src/miniaudio-populate-stamp/Debug/miniaudio-populate-mkdir
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E make_directory C:/Engine/build/_deps/miniaudio-build
+if %errorlevel% neq 0 goto :cmEnd
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E make_directory C:/Engine/build/_deps/miniaudio-subbuild/miniaudio-populate-prefix
+if %errorlevel% neq 0 goto :cmEnd
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E make_directory C:/Engine/build/_deps/miniaudio-subbuild/miniaudio-populate-prefix/tmp
+if %errorlevel% neq 0 goto :cmEnd
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E make_directory C:/Engine/build/_deps/miniaudio-subbuild/miniaudio-populate-prefix/src/miniaudio-populate-stamp/Debug
+if %errorlevel% neq 0 goto :cmEnd
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E make_directory C:/Engine/build/_deps/miniaudio-subbuild/miniaudio-populate-prefix/src
+if %errorlevel% neq 0 goto :cmEnd
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E make_directory C:/Engine/build/_deps/miniaudio-subbuild/miniaudio-populate-prefix/src/miniaudio-populate-stamp
+if %errorlevel% neq 0 goto :cmEnd
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E touch C:/Engine/build/_deps/miniaudio-subbuild/miniaudio-populate-prefix/src/miniaudio-populate-stamp/Debug/miniaudio-populate-mkdir
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
@@ -10,15 +22,15 @@ endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd
-^C:\ENGINE\BUILD\_DEPS\MINIAUDIO-SUBBUILD\CMAKEFILES\8BEE50B92820B370347BF0B313F7D1CA\MINIAUDIO-POPULATE-DOWNLOAD.RULE
+^C:\ENGINE\BUILD\_DEPS\MINIAUDIO-SUBBUILD\CMAKEFILES\6F48E7E207D8B23A8EB04C491336461F\MINIAUDIO-POPULATE-DOWNLOAD.RULE
 setlocal
 cd C:\Engine\build\_deps
 if %errorlevel% neq 0 goto :cmEnd
 C:
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -DCMAKE_MESSAGE_LOG_LEVEL=VERBOSE -P C:/Engine/build/_deps/miniaudio-subbuild/miniaudio-populate-prefix/tmp/miniaudio-populate-gitclone.cmake
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -P C:/Engine/build/_deps/miniaudio-subbuild/miniaudio-populate-prefix/tmp/miniaudio-populate-gitclone.cmake
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch C:/Engine/build/_deps/miniaudio-subbuild/miniaudio-populate-prefix/src/miniaudio-populate-stamp/Debug/miniaudio-populate-download
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E touch C:/Engine/build/_deps/miniaudio-subbuild/miniaudio-populate-prefix/src/miniaudio-populate-stamp/Debug/miniaudio-populate-download
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
@@ -26,13 +38,13 @@ endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd
-^C:\ENGINE\BUILD\_DEPS\MINIAUDIO-SUBBUILD\CMAKEFILES\8BEE50B92820B370347BF0B313F7D1CA\MINIAUDIO-POPULATE-UPDATE.RULE
+^C:\ENGINE\BUILD\_DEPS\MINIAUDIO-SUBBUILD\CMAKEFILES\6F48E7E207D8B23A8EB04C491336461F\MINIAUDIO-POPULATE-UPDATE.RULE
 setlocal
 cd C:\Engine\build\_deps\miniaudio-src
 if %errorlevel% neq 0 goto :cmEnd
 C:
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -Dcan_fetch=YES -DCMAKE_MESSAGE_LOG_LEVEL=VERBOSE -P C:/Engine/build/_deps/miniaudio-subbuild/miniaudio-populate-prefix/tmp/miniaudio-populate-gitupdate.cmake
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -P C:/Engine/build/_deps/miniaudio-subbuild/miniaudio-populate-prefix/tmp/miniaudio-populate-gitupdate.cmake
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
@@ -40,27 +52,11 @@ endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd
-^C:\ENGINE\BUILD\_DEPS\MINIAUDIO-SUBBUILD\CMAKEFILES\8BEE50B92820B370347BF0B313F7D1CA\MINIAUDIO-POPULATE-PATCH.RULE
+^C:\ENGINE\BUILD\_DEPS\MINIAUDIO-SUBBUILD\CMAKEFILES\6F48E7E207D8B23A8EB04C491336461F\MINIAUDIO-POPULATE-PATCH.RULE
 setlocal
-"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo_append
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E echo_append
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch C:/Engine/build/_deps/miniaudio-subbuild/miniaudio-populate-prefix/src/miniaudio-populate-stamp/Debug/miniaudio-populate-patch
-if %errorlevel% neq 0 goto :cmEnd
-:cmEnd
-endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
-:cmErrorLevel
-exit /b %1
-:cmDone
-if %errorlevel% neq 0 goto :VCEnd
-^C:\ENGINE\BUILD\_DEPS\MINIAUDIO-SUBBUILD\CMAKEFILES\8BEE50B92820B370347BF0B313F7D1CA\MINIAUDIO-POPULATE-CONFIGURE.RULE
-setlocal
-cd C:\Engine\build\_deps\miniaudio-build
-if %errorlevel% neq 0 goto :cmEnd
-C:
-if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo_append
-if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch C:/Engine/build/_deps/miniaudio-subbuild/miniaudio-populate-prefix/src/miniaudio-populate-stamp/Debug/miniaudio-populate-configure
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E touch C:/Engine/build/_deps/miniaudio-subbuild/miniaudio-populate-prefix/src/miniaudio-populate-stamp/Debug/miniaudio-populate-patch
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
@@ -68,15 +64,15 @@ endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd
-^C:\ENGINE\BUILD\_DEPS\MINIAUDIO-SUBBUILD\CMAKEFILES\8BEE50B92820B370347BF0B313F7D1CA\MINIAUDIO-POPULATE-BUILD.RULE
+^C:\ENGINE\BUILD\_DEPS\MINIAUDIO-SUBBUILD\CMAKEFILES\6F48E7E207D8B23A8EB04C491336461F\MINIAUDIO-POPULATE-CONFIGURE.RULE
 setlocal
 cd C:\Engine\build\_deps\miniaudio-build
 if %errorlevel% neq 0 goto :cmEnd
 C:
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo_append
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E echo_append
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch C:/Engine/build/_deps/miniaudio-subbuild/miniaudio-populate-prefix/src/miniaudio-populate-stamp/Debug/miniaudio-populate-build
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E touch C:/Engine/build/_deps/miniaudio-subbuild/miniaudio-populate-prefix/src/miniaudio-populate-stamp/Debug/miniaudio-populate-configure
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
@@ -84,15 +80,15 @@ endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd
-^C:\ENGINE\BUILD\_DEPS\MINIAUDIO-SUBBUILD\CMAKEFILES\8BEE50B92820B370347BF0B313F7D1CA\MINIAUDIO-POPULATE-INSTALL.RULE
+^C:\ENGINE\BUILD\_DEPS\MINIAUDIO-SUBBUILD\CMAKEFILES\6F48E7E207D8B23A8EB04C491336461F\MINIAUDIO-POPULATE-BUILD.RULE
 setlocal
 cd C:\Engine\build\_deps\miniaudio-build
 if %errorlevel% neq 0 goto :cmEnd
 C:
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo_append
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E echo_append
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch C:/Engine/build/_deps/miniaudio-subbuild/miniaudio-populate-prefix/src/miniaudio-populate-stamp/Debug/miniaudio-populate-install
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E touch C:/Engine/build/_deps/miniaudio-subbuild/miniaudio-populate-prefix/src/miniaudio-populate-stamp/Debug/miniaudio-populate-build
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
@@ -100,15 +96,15 @@ endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd
-^C:\ENGINE\BUILD\_DEPS\MINIAUDIO-SUBBUILD\CMAKEFILES\8BEE50B92820B370347BF0B313F7D1CA\MINIAUDIO-POPULATE-TEST.RULE
+^C:\ENGINE\BUILD\_DEPS\MINIAUDIO-SUBBUILD\CMAKEFILES\6F48E7E207D8B23A8EB04C491336461F\MINIAUDIO-POPULATE-INSTALL.RULE
 setlocal
 cd C:\Engine\build\_deps\miniaudio-build
 if %errorlevel% neq 0 goto :cmEnd
 C:
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo_append
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E echo_append
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch C:/Engine/build/_deps/miniaudio-subbuild/miniaudio-populate-prefix/src/miniaudio-populate-stamp/Debug/miniaudio-populate-test
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E touch C:/Engine/build/_deps/miniaudio-subbuild/miniaudio-populate-prefix/src/miniaudio-populate-stamp/Debug/miniaudio-populate-install
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
@@ -116,13 +112,29 @@ endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd
-^C:\ENGINE\BUILD\_DEPS\MINIAUDIO-SUBBUILD\CMAKEFILES\7A7843F232E945F7F8B74DAE74A406DC\MINIAUDIO-POPULATE-COMPLETE.RULE
+^C:\ENGINE\BUILD\_DEPS\MINIAUDIO-SUBBUILD\CMAKEFILES\6F48E7E207D8B23A8EB04C491336461F\MINIAUDIO-POPULATE-TEST.RULE
 setlocal
-"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E make_directory C:/Engine/build/_deps/miniaudio-subbuild/CMakeFiles/Debug
+cd C:\Engine\build\_deps\miniaudio-build
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch C:/Engine/build/_deps/miniaudio-subbuild/CMakeFiles/Debug/miniaudio-populate-complete
+C:
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch C:/Engine/build/_deps/miniaudio-subbuild/miniaudio-populate-prefix/src/miniaudio-populate-stamp/Debug/miniaudio-populate-done
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E touch C:/Engine/build/_deps/miniaudio-subbuild/miniaudio-populate-prefix/src/miniaudio-populate-stamp/Debug/miniaudio-populate-test
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\ENGINE\BUILD\_DEPS\MINIAUDIO-SUBBUILD\CMAKEFILES\12865C20A3E1B8E50E5264DDEDEBA791\MINIAUDIO-POPULATE-COMPLETE.RULE
+setlocal
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E make_directory C:/Engine/build/_deps/miniaudio-subbuild/CMakeFiles/Debug
+if %errorlevel% neq 0 goto :cmEnd
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E touch C:/Engine/build/_deps/miniaudio-subbuild/CMakeFiles/Debug/miniaudio-populate-complete
+if %errorlevel% neq 0 goto :cmEnd
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E touch C:/Engine/build/_deps/miniaudio-subbuild/miniaudio-populate-prefix/src/miniaudio-populate-stamp/Debug/miniaudio-populate-done
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
@@ -140,7 +152,7 @@ exit /b %1
 if %errorlevel% neq 0 goto :VCEnd
 ^C:\ENGINE\BUILD\_DEPS\MINIAUDIO-SUBBUILD\CMAKELISTS.TXT
 setlocal
-"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:/Engine/build/_deps/miniaudio-subbuild -BC:/Engine/build/_deps/miniaudio-subbuild --check-stamp-file C:/Engine/build/_deps/miniaudio-subbuild/CMakeFiles/generate.stamp
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -SC:/Engine/build/_deps/miniaudio-subbuild -BC:/Engine/build/_deps/miniaudio-subbuild --check-stamp-file C:/Engine/build/_deps/miniaudio-subbuild/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone

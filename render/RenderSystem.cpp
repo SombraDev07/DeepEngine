@@ -72,7 +72,7 @@ void RenderSystem::Resize(u32 w, u32 h)
 
 void RenderSystem::BeginFrame()
 {
-	float c[4] = {0.1f,0.12f,0.15f,1};
+	float c[4] = {0.1f,0.3f,0.8f,1};
 	m_ctx->ClearRenderTargetView(m_viewportRTV, c);
 	m_ctx->ClearDepthStencilView(m_viewportDSV, D3D11_CLEAR_DEPTH, 1, 0);
 	m_litVerts.clear(); m_litIndices.clear(); m_wireVerts.clear();
@@ -80,7 +80,11 @@ void RenderSystem::BeginFrame()
 
 void RenderSystem::EndFrame() {}
 
-void RenderSystem::RenderViewport(const Camera& cam, ID3D11ShaderResourceView** out) { RenderSky(cam); if (out) *out = m_viewportSRV; }
+void RenderSystem::RenderViewport(const Camera& cam, ID3D11ShaderResourceView** out) {
+	if (m_shadowDSV) RenderShadowMap(cam);
+	if (out) *out = m_viewportSRV;
+	// Note: Sky is rendered in BeginFrame via clear color. FlushLit/Wire draw geometry on top.
+}
 
 ID3D11Buffer* RenderSystem::CreateVB(const void* data, u32 stride, u32 count)
 {
@@ -278,10 +282,14 @@ bool RenderSystem::CompileShaders()
 		cbuffer Sky : register(b0) { float3 sunDir; float pad; float4 c1; float4 c2; }
 		float4 main(float4 p : SV_POSITION) : SV_Target {
 			float3 d = normalize(float3(p.x, 0.5 + abs(p.y) * 0.5, p.y));
-			float h = clamp(d.y, 0, 1);
-			float3 col = lerp(c1.rgb, c2.rgb, h);
-			float sun = saturate(dot(d, sunDir));
-			col += pow(sun, 128) * float3(1, 0.9f, 0.6f) * 2;
+			// Rayleigh scattering
+			float sunAngle = dot(d, sunDir);
+			float rayleigh = pow(1.0 - abs(d.y), 8.0);
+			float mie = pow(saturate(sunAngle), 64.0);
+			float3 skyCol = lerp(float3(0.3,0.5,1.0), float3(0.5,0.7,1.0), d.y * 0.5 + 0.5);
+			float3 sunCol = float3(1.0, 0.9, 0.5) * mie * 2.0;
+			float3 horizon = float3(0.9, 0.8, 0.6) * pow(1.0 - abs(d.y), 4.0);
+			float3 col = skyCol * (1.0 - rayleigh * 0.5) + sunCol + horizon * 0.3;
 			return float4(col, 1);
 		}
 	)";
@@ -303,6 +311,18 @@ bool RenderSystem::CompileShaders()
 	struct SkyCB { float sunDir[3]; float p1; float c1[4]; float c2[4]; };
 	cbd.ByteWidth = sizeof(SkyCB);
 	m_device->CreateBuffer(&cbd, nullptr, &m_cbSky);
+
+	// Shadow map (optional, won't crash if it fails)
+	D3D11_TEXTURE2D_DESC smd = {};
+	smd.Width = 2048; smd.Height = 2048; smd.MipLevels = 1; smd.ArraySize = 1;
+	smd.Format = DXGI_FORMAT_R24G8_TYPELESS; smd.SampleDesc.Count = 1;
+	smd.Usage = D3D11_USAGE_DEFAULT; smd.BindFlags = D3D11_BIND_DEPTH_STENCIL | D3D11_BIND_SHADER_RESOURCE;
+	if (SUCCEEDED(m_device->CreateTexture2D(&smd, nullptr, &m_shadowTex))) {
+		D3D11_DEPTH_STENCIL_VIEW_DESC dsvd = {}; dsvd.Format = DXGI_FORMAT_D24_UNORM_S8_UINT; dsvd.ViewDimension = D3D11_DSV_DIMENSION_TEXTURE2D;
+		m_device->CreateDepthStencilView(m_shadowTex, &dsvd, &m_shadowDSV);
+		D3D11_SHADER_RESOURCE_VIEW_DESC srvd = {}; srvd.Format = DXGI_FORMAT_R24_UNORM_X8_TYPELESS; srvd.ViewDimension = D3D11_SRV_DIMENSION_TEXTURE2D; srvd.Texture2D.MipLevels = 1;
+		m_device->CreateShaderResourceView(m_shadowTex, &srvd, &m_shadowSRV);
+	}
 
 	return true;
 }
@@ -342,4 +362,29 @@ void RenderSystem::DrawMeshCached(const Mesh& mesh, const Camera& cam, const Vec
 	D3D11_VIEWPORT dv = {0,0,(float)m_width,(float)m_height,0,1}; m_ctx->RSSetViewports(1, &dv);
 	m_ctx->OMSetRenderTargets(1, &m_viewportRTV, m_viewportDSV);
 	m_ctx->DrawIndexed((UINT)mesh.indices.size(), 0, 0);
+}
+
+void RenderSystem::RenderShadowMap(const Camera& cam)
+{
+	if (!m_shadowDSV) return;
+	m_ctx->ClearDepthStencilView(m_shadowDSV, D3D11_CLEAR_DEPTH, 1, 0);
+	if (m_litVerts.empty()) return;
+	m_ctx->OMSetRenderTargets(0, nullptr, m_shadowDSV);
+	D3D11_VIEWPORT svp = {0,0,2048,2048,0,1};
+	m_ctx->RSSetViewports(1, &svp);
+	m_ctx->VSSetShader(m_wireVS, nullptr, 0); m_ctx->PSSetShader(nullptr, nullptr, 0);
+	XMVECTOR lp = XMVectorSet(20,30,10,1), lt = XMVectorZero(), up = XMVectorSet(0,1,0,0);
+	XMMATRIX lv = XMMatrixLookAtLH(lp,lt,up);
+	XMMATRIX lp2 = XMMatrixOrthographicLH(60,60,1,100);
+	XMMATRIX vp = XMMatrixMultiply(lv,lp2); vp = XMMatrixTranspose(vp);
+	CameraCB cb; cb.viewProj = vp;
+	m_ctx->UpdateSubresource(m_cbCamera,0,nullptr,&cb,0,0);
+	m_ctx->VSSetConstantBuffers(0,1,&m_cbCamera);
+	auto* vb = CreateVB(m_litVerts.data(),sizeof(LtVertex),(u32)m_litVerts.size());
+	auto* ib = CreateIB(m_litIndices.data(),(u32)m_litIndices.size());
+	UINT s = sizeof(LtVertex), o = 0;
+	m_ctx->IASetVertexBuffers(0,1,&vb,&s,&o); m_ctx->IASetIndexBuffer(ib,DXGI_FORMAT_R32_UINT,0);
+	m_ctx->IASetInputLayout(m_litLayout); m_ctx->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+	m_ctx->DrawIndexed((UINT)m_litIndices.size(),0,0);
+	vb->Release(); ib->Release();
 }

@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "C:/Engine/launcher/build/_deps/imgui-subbuild/CMakeFiles/imgui-populate"
+		},
+		{
+			"file" : "C:/Engine/launcher/build/_deps/imgui-subbuild/CMakeFiles/fe7af979d8fd74def48ec567f63d6f9c/imgui-populate.rule"
+		},
+		{
+			"file" : "C:/Engine/launcher/build/_deps/imgui-subbuild/CMakeFiles/37b0117d670e237ddef96c12db8ba09c/imgui-populate-complete.rule"
+		},
+		{
+			"file" : "C:/Engine/launcher/build/_deps/imgui-subbuild/CMakeFiles/57cf4b7525b6b75f5ac675c0efbab0ee/imgui-populate-build.rule"
+		},
+		{
+			"file" : "C:/Engine/launcher/build/_deps/imgui-subbuild/CMakeFiles/57cf4b7525b6b75f5ac675c0efbab0ee/imgui-populate-configure.rule"
+		},
+		{
+			"file" : "C:/Engine/launcher/build/_deps/imgui-subbuild/CMakeFiles/57cf4b7525b6b75f5ac675c0efbab0ee/imgui-populate-download.rule"
+		},
+		{
+			"file" : "C:/Engine/launcher/build/_deps/imgui-subbuild/CMakeFiles/57cf4b7525b6b75f5ac675c0efbab0ee/imgui-populate-install.rule"
+		},
+		{
+			"file" : "C:/Engine/launcher/build/_deps/imgui-subbuild/CMakeFiles/57cf4b7525b6b75f5ac675c0efbab0ee/imgui-populate-mkdir.rule"
+		},
+		{
+			"file" : "C:/Engine/launcher/build/_deps/imgui-subbuild/CMakeFiles/57cf4b7525b6b75f5ac675c0efbab0ee/imgui-populate-patch.rule"
+		},
+		{
+			"file" : "C:/Engine/launcher/build/_deps/imgui-subbuild/CMakeFiles/57cf4b7525b6b75f5ac675c0efbab0ee/imgui-populate-test.rule"
+		},
+		{
+			"file" : "C:/Engine/launcher/build/_deps/imgui-subbuild/CMakeFiles/57cf4b7525b6b75f5ac675c0efbab0ee/imgui-populate-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"imgui-populate"
+		],
+		"name" : "imgui-populate"
+	}
+}

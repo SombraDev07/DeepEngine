@@ -1,4 +1,4 @@
-prefix=C:/Program Files/Engine
+prefix=C:/Program Files/DeepEngine
 includedir=${prefix}/include
 
 Name: EnTT

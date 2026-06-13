@@ -1,0 +1,10 @@
+^C:\ENGINE\LAUNCHER\BUILD\CMAKEFILES\4F66F148F618C6E2BFA10E15B2FE1B1F\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:/Engine/launcher -BC:/Engine/launcher/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Engine/launcher/build/CryLauncher.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

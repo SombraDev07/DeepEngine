@@ -1,4 +1,4 @@
-prefix=C:/Program Files/Engine
+prefix=C:/Program Files/DeepEngine
 exec_prefix=${prefix}
 includedir=${prefix}/include
 libdir=${exec_prefix}/lib

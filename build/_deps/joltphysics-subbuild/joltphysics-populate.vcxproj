@@ -8,11 +8,23 @@
       <Configuration>Debug</Configuration>
       <Platform>x64</Platform>
     </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{F2922891-D3B2-31C0-BE64-0C8429933CDB}</ProjectGuid>
-    <Keyword>Win32Proj</Keyword>
     <WindowsTargetPlatformVersion>10.0.26100.0</WindowsTargetPlatformVersion>
+    <Keyword>Win32Proj</Keyword>
     <Platform>x64</Platform>
     <ProjectName>joltphysics-populate</ProjectName>
     <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
@@ -22,7 +34,21 @@
     <ConfigurationType>Utility</ConfigurationType>
     <CharacterSet>MultiByte</CharacterSet>
     <PlatformToolset>v143</PlatformToolset>
-    <UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -34,6 +60,9 @@
   <PropertyGroup>
     <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Midl>
@@ -45,14 +74,55 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
   </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\Engine\build\_deps\joltphysics-subbuild\CMakeFiles\d1fae5e872918a09deec33edc80cb028\joltphysics-populate-mkdir.rule">
-      <BuildInParallel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</BuildInParallel>
+    <CustomBuild Include="C:\Engine\build\_deps\joltphysics-subbuild\CMakeFiles\32593ff3401460d9d840a43388e9fd16\joltphysics-populate-mkdir.rule">
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Creating directories for 'joltphysics-populate'</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
-"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -Dcfgdir=/Debug -P C:/Engine/build/_deps/joltphysics-subbuild/joltphysics-populate-prefix/tmp/joltphysics-populate-mkdirs.cmake
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E make_directory C:/Engine/build/_deps/joltphysics-src
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch C:/Engine/build/_deps/joltphysics-subbuild/joltphysics-populate-prefix/src/joltphysics-populate-stamp/Debug/joltphysics-populate-mkdir
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E make_directory C:/Engine/build/_deps/joltphysics-build
+if %errorlevel% neq 0 goto :cmEnd
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E make_directory C:/Engine/build/_deps/joltphysics-subbuild/joltphysics-populate-prefix
+if %errorlevel% neq 0 goto :cmEnd
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E make_directory C:/Engine/build/_deps/joltphysics-subbuild/joltphysics-populate-prefix/tmp
+if %errorlevel% neq 0 goto :cmEnd
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E make_directory C:/Engine/build/_deps/joltphysics-subbuild/joltphysics-populate-prefix/src/joltphysics-populate-stamp/$(Configuration)
+if %errorlevel% neq 0 goto :cmEnd
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E make_directory C:/Engine/build/_deps/joltphysics-subbuild/joltphysics-populate-prefix/src
+if %errorlevel% neq 0 goto :cmEnd
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E make_directory C:/Engine/build/_deps/joltphysics-subbuild/joltphysics-populate-prefix/src/joltphysics-populate-stamp
+if %errorlevel% neq 0 goto :cmEnd
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E touch C:/Engine/build/_deps/joltphysics-subbuild/joltphysics-populate-prefix/src/joltphysics-populate-stamp/$(Configuration)/joltphysics-populate-mkdir
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -61,21 +131,102 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\Debug\joltphysics-populate-mkdir</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\$(Configuration)\joltphysics-populate-mkdir</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Creating directories for 'joltphysics-populate'</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E make_directory C:/Engine/build/_deps/joltphysics-src
+if %errorlevel% neq 0 goto :cmEnd
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E make_directory C:/Engine/build/_deps/joltphysics-build
+if %errorlevel% neq 0 goto :cmEnd
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E make_directory C:/Engine/build/_deps/joltphysics-subbuild/joltphysics-populate-prefix
+if %errorlevel% neq 0 goto :cmEnd
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E make_directory C:/Engine/build/_deps/joltphysics-subbuild/joltphysics-populate-prefix/tmp
+if %errorlevel% neq 0 goto :cmEnd
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E make_directory C:/Engine/build/_deps/joltphysics-subbuild/joltphysics-populate-prefix/src/joltphysics-populate-stamp/$(Configuration)
+if %errorlevel% neq 0 goto :cmEnd
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E make_directory C:/Engine/build/_deps/joltphysics-subbuild/joltphysics-populate-prefix/src
+if %errorlevel% neq 0 goto :cmEnd
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E make_directory C:/Engine/build/_deps/joltphysics-subbuild/joltphysics-populate-prefix/src/joltphysics-populate-stamp
+if %errorlevel% neq 0 goto :cmEnd
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E touch C:/Engine/build/_deps/joltphysics-subbuild/joltphysics-populate-prefix/src/joltphysics-populate-stamp/$(Configuration)/joltphysics-populate-mkdir
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\$(Configuration)\joltphysics-populate-mkdir</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Creating directories for 'joltphysics-populate'</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E make_directory C:/Engine/build/_deps/joltphysics-src
+if %errorlevel% neq 0 goto :cmEnd
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E make_directory C:/Engine/build/_deps/joltphysics-build
+if %errorlevel% neq 0 goto :cmEnd
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E make_directory C:/Engine/build/_deps/joltphysics-subbuild/joltphysics-populate-prefix
+if %errorlevel% neq 0 goto :cmEnd
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E make_directory C:/Engine/build/_deps/joltphysics-subbuild/joltphysics-populate-prefix/tmp
+if %errorlevel% neq 0 goto :cmEnd
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E make_directory C:/Engine/build/_deps/joltphysics-subbuild/joltphysics-populate-prefix/src/joltphysics-populate-stamp/$(Configuration)
+if %errorlevel% neq 0 goto :cmEnd
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E make_directory C:/Engine/build/_deps/joltphysics-subbuild/joltphysics-populate-prefix/src
+if %errorlevel% neq 0 goto :cmEnd
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E make_directory C:/Engine/build/_deps/joltphysics-subbuild/joltphysics-populate-prefix/src/joltphysics-populate-stamp
+if %errorlevel% neq 0 goto :cmEnd
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E touch C:/Engine/build/_deps/joltphysics-subbuild/joltphysics-populate-prefix/src/joltphysics-populate-stamp/$(Configuration)/joltphysics-populate-mkdir
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\$(Configuration)\joltphysics-populate-mkdir</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Creating directories for 'joltphysics-populate'</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E make_directory C:/Engine/build/_deps/joltphysics-src
+if %errorlevel% neq 0 goto :cmEnd
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E make_directory C:/Engine/build/_deps/joltphysics-build
+if %errorlevel% neq 0 goto :cmEnd
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E make_directory C:/Engine/build/_deps/joltphysics-subbuild/joltphysics-populate-prefix
+if %errorlevel% neq 0 goto :cmEnd
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E make_directory C:/Engine/build/_deps/joltphysics-subbuild/joltphysics-populate-prefix/tmp
+if %errorlevel% neq 0 goto :cmEnd
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E make_directory C:/Engine/build/_deps/joltphysics-subbuild/joltphysics-populate-prefix/src/joltphysics-populate-stamp/$(Configuration)
+if %errorlevel% neq 0 goto :cmEnd
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E make_directory C:/Engine/build/_deps/joltphysics-subbuild/joltphysics-populate-prefix/src
+if %errorlevel% neq 0 goto :cmEnd
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E make_directory C:/Engine/build/_deps/joltphysics-subbuild/joltphysics-populate-prefix/src/joltphysics-populate-stamp
+if %errorlevel% neq 0 goto :cmEnd
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E touch C:/Engine/build/_deps/joltphysics-subbuild/joltphysics-populate-prefix/src/joltphysics-populate-stamp/$(Configuration)/joltphysics-populate-mkdir
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\$(Configuration)\joltphysics-populate-mkdir</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\Engine\build\_deps\joltphysics-subbuild\CMakeFiles\d1fae5e872918a09deec33edc80cb028\joltphysics-populate-download.rule">
+    <CustomBuild Include="C:\Engine\build\_deps\joltphysics-subbuild\CMakeFiles\32593ff3401460d9d840a43388e9fd16\joltphysics-populate-download.rule">
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Performing download step (git clone) for 'joltphysics-populate'</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
 cd C:\Engine\build\_deps
 if %errorlevel% neq 0 goto :cmEnd
 C:
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -DCMAKE_MESSAGE_LOG_LEVEL=VERBOSE -P C:/Engine/build/_deps/joltphysics-subbuild/joltphysics-populate-prefix/tmp/joltphysics-populate-gitclone.cmake
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -P C:/Engine/build/_deps/joltphysics-subbuild/joltphysics-populate-prefix/tmp/joltphysics-populate-gitclone.cmake
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch C:/Engine/build/_deps/joltphysics-subbuild/joltphysics-populate-prefix/src/joltphysics-populate-stamp/Debug/joltphysics-populate-download
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E touch C:/Engine/build/_deps/joltphysics-subbuild/joltphysics-populate-prefix/src/joltphysics-populate-stamp/$(Configuration)/joltphysics-populate-download
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -83,20 +234,77 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\joltphysics-populate-gitinfo.txt;C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\Debug\joltphysics-populate-mkdir;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\Debug\joltphysics-populate-download</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\joltphysics-populate-gitinfo.txt;C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\$(Configuration)\joltphysics-populate-mkdir;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\$(Configuration)\joltphysics-populate-download</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Performing download step (git clone) for 'joltphysics-populate'</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+cd C:\Engine\build\_deps
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -P C:/Engine/build/_deps/joltphysics-subbuild/joltphysics-populate-prefix/tmp/joltphysics-populate-gitclone.cmake
+if %errorlevel% neq 0 goto :cmEnd
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E touch C:/Engine/build/_deps/joltphysics-subbuild/joltphysics-populate-prefix/src/joltphysics-populate-stamp/$(Configuration)/joltphysics-populate-download
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\joltphysics-populate-gitinfo.txt;C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\$(Configuration)\joltphysics-populate-mkdir;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\$(Configuration)\joltphysics-populate-download</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Performing download step (git clone) for 'joltphysics-populate'</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+cd C:\Engine\build\_deps
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -P C:/Engine/build/_deps/joltphysics-subbuild/joltphysics-populate-prefix/tmp/joltphysics-populate-gitclone.cmake
+if %errorlevel% neq 0 goto :cmEnd
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E touch C:/Engine/build/_deps/joltphysics-subbuild/joltphysics-populate-prefix/src/joltphysics-populate-stamp/$(Configuration)/joltphysics-populate-download
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\joltphysics-populate-gitinfo.txt;C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\$(Configuration)\joltphysics-populate-mkdir;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\$(Configuration)\joltphysics-populate-download</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Performing download step (git clone) for 'joltphysics-populate'</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+cd C:\Engine\build\_deps
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -P C:/Engine/build/_deps/joltphysics-subbuild/joltphysics-populate-prefix/tmp/joltphysics-populate-gitclone.cmake
+if %errorlevel% neq 0 goto :cmEnd
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E touch C:/Engine/build/_deps/joltphysics-subbuild/joltphysics-populate-prefix/src/joltphysics-populate-stamp/$(Configuration)/joltphysics-populate-download
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\joltphysics-populate-gitinfo.txt;C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\$(Configuration)\joltphysics-populate-mkdir;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\$(Configuration)\joltphysics-populate-download</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\Engine\build\_deps\joltphysics-subbuild\CMakeFiles\d1fae5e872918a09deec33edc80cb028\joltphysics-populate-update.rule">
+    <CustomBuild Include="C:\Engine\build\_deps\joltphysics-subbuild\CMakeFiles\32593ff3401460d9d840a43388e9fd16\joltphysics-populate-update.rule">
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Performing update step for 'joltphysics-populate'</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
 cd C:\Engine\build\_deps\joltphysics-src
 if %errorlevel% neq 0 goto :cmEnd
 C:
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -Dcan_fetch=YES -DCMAKE_MESSAGE_LOG_LEVEL=VERBOSE -P C:/Engine/build/_deps/joltphysics-subbuild/joltphysics-populate-prefix/tmp/joltphysics-populate-gitupdate.cmake
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -P C:/Engine/build/_deps/joltphysics-subbuild/joltphysics-populate-prefix/tmp/joltphysics-populate-gitupdate.cmake
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -104,19 +312,73 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\tmp\joltphysics-populate-gitupdate.cmake;C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\joltphysics-populate-update-info.txt;C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\Debug\joltphysics-populate-download;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\Debug\joltphysics-populate-update</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\$(Configuration)\joltphysics-populate-download;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\$(Configuration)\joltphysics-populate-update</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
       <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</VerifyInputsAndOutputsExist>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Performing update step for 'joltphysics-populate'</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+cd C:\Engine\build\_deps\joltphysics-src
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -P C:/Engine/build/_deps/joltphysics-subbuild/joltphysics-populate-prefix/tmp/joltphysics-populate-gitupdate.cmake
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\$(Configuration)\joltphysics-populate-download;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\$(Configuration)\joltphysics-populate-update</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</VerifyInputsAndOutputsExist>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Performing update step for 'joltphysics-populate'</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+cd C:\Engine\build\_deps\joltphysics-src
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -P C:/Engine/build/_deps/joltphysics-subbuild/joltphysics-populate-prefix/tmp/joltphysics-populate-gitupdate.cmake
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\$(Configuration)\joltphysics-populate-download;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\$(Configuration)\joltphysics-populate-update</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</VerifyInputsAndOutputsExist>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Performing update step for 'joltphysics-populate'</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+cd C:\Engine\build\_deps\joltphysics-src
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -P C:/Engine/build/_deps/joltphysics-subbuild/joltphysics-populate-prefix/tmp/joltphysics-populate-gitupdate.cmake
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\$(Configuration)\joltphysics-populate-download;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\$(Configuration)\joltphysics-populate-update</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+      <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</VerifyInputsAndOutputsExist>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\Engine\build\_deps\joltphysics-subbuild\CMakeFiles\d1fae5e872918a09deec33edc80cb028\joltphysics-populate-patch.rule">
+    <CustomBuild Include="C:\Engine\build\_deps\joltphysics-subbuild\CMakeFiles\32593ff3401460d9d840a43388e9fd16\joltphysics-populate-patch.rule">
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">No patch step for 'joltphysics-populate'</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
-"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo_append
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E echo_append
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch C:/Engine/build/_deps/joltphysics-subbuild/joltphysics-populate-prefix/src/joltphysics-populate-stamp/Debug/joltphysics-populate-patch
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E touch C:/Engine/build/_deps/joltphysics-subbuild/joltphysics-populate-prefix/src/joltphysics-populate-stamp/$(Configuration)/joltphysics-populate-patch
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -124,24 +386,71 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\joltphysics-populate-patch-info.txt;C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\Debug\joltphysics-populate-update;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\Debug\joltphysics-populate-patch</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\$(Configuration)\joltphysics-populate-update;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\$(Configuration)\joltphysics-populate-patch</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
       <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</VerifyInputsAndOutputsExist>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">No patch step for 'joltphysics-populate'</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E touch C:/Engine/build/_deps/joltphysics-subbuild/joltphysics-populate-prefix/src/joltphysics-populate-stamp/$(Configuration)/joltphysics-populate-patch
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\$(Configuration)\joltphysics-populate-update;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\$(Configuration)\joltphysics-populate-patch</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</VerifyInputsAndOutputsExist>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">No patch step for 'joltphysics-populate'</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E touch C:/Engine/build/_deps/joltphysics-subbuild/joltphysics-populate-prefix/src/joltphysics-populate-stamp/$(Configuration)/joltphysics-populate-patch
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\$(Configuration)\joltphysics-populate-update;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\$(Configuration)\joltphysics-populate-patch</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</VerifyInputsAndOutputsExist>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">No patch step for 'joltphysics-populate'</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E touch C:/Engine/build/_deps/joltphysics-subbuild/joltphysics-populate-prefix/src/joltphysics-populate-stamp/$(Configuration)/joltphysics-populate-patch
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\$(Configuration)\joltphysics-populate-update;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\$(Configuration)\joltphysics-populate-patch</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+      <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</VerifyInputsAndOutputsExist>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\Engine\build\_deps\joltphysics-subbuild\CMakeFiles\d1fae5e872918a09deec33edc80cb028\joltphysics-populate-configure.rule">
-      <BuildInParallel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</BuildInParallel>
+    <CustomBuild Include="C:\Engine\build\_deps\joltphysics-subbuild\CMakeFiles\32593ff3401460d9d840a43388e9fd16\joltphysics-populate-configure.rule">
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">No configure step for 'joltphysics-populate'</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
 cd C:\Engine\build\_deps\joltphysics-build
 if %errorlevel% neq 0 goto :cmEnd
 C:
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo_append
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E echo_append
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch C:/Engine/build/_deps/joltphysics-subbuild/joltphysics-populate-prefix/src/joltphysics-populate-stamp/Debug/joltphysics-populate-configure
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E touch C:/Engine/build/_deps/joltphysics-subbuild/joltphysics-populate-prefix/src/joltphysics-populate-stamp/$(Configuration)/joltphysics-populate-configure
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -149,23 +458,79 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\tmp\joltphysics-populate-cfgcmd.txt;C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\Debug\joltphysics-populate-patch;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\Debug\joltphysics-populate-configure</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\tmp\joltphysics-populate-cfgcmd.txt;C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\$(Configuration)\joltphysics-populate-patch;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\$(Configuration)\joltphysics-populate-configure</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">No configure step for 'joltphysics-populate'</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+cd C:\Engine\build\_deps\joltphysics-build
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E touch C:/Engine/build/_deps/joltphysics-subbuild/joltphysics-populate-prefix/src/joltphysics-populate-stamp/$(Configuration)/joltphysics-populate-configure
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\tmp\joltphysics-populate-cfgcmd.txt;C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\$(Configuration)\joltphysics-populate-patch;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\$(Configuration)\joltphysics-populate-configure</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">No configure step for 'joltphysics-populate'</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+cd C:\Engine\build\_deps\joltphysics-build
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E touch C:/Engine/build/_deps/joltphysics-subbuild/joltphysics-populate-prefix/src/joltphysics-populate-stamp/$(Configuration)/joltphysics-populate-configure
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\tmp\joltphysics-populate-cfgcmd.txt;C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\$(Configuration)\joltphysics-populate-patch;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\$(Configuration)\joltphysics-populate-configure</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">No configure step for 'joltphysics-populate'</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+cd C:\Engine\build\_deps\joltphysics-build
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E touch C:/Engine/build/_deps/joltphysics-subbuild/joltphysics-populate-prefix/src/joltphysics-populate-stamp/$(Configuration)/joltphysics-populate-configure
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\tmp\joltphysics-populate-cfgcmd.txt;C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\$(Configuration)\joltphysics-populate-patch;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\$(Configuration)\joltphysics-populate-configure</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\Engine\build\_deps\joltphysics-subbuild\CMakeFiles\d1fae5e872918a09deec33edc80cb028\joltphysics-populate-build.rule">
-      <BuildInParallel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</BuildInParallel>
+    <CustomBuild Include="C:\Engine\build\_deps\joltphysics-subbuild\CMakeFiles\32593ff3401460d9d840a43388e9fd16\joltphysics-populate-build.rule">
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">No build step for 'joltphysics-populate'</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
 cd C:\Engine\build\_deps\joltphysics-build
 if %errorlevel% neq 0 goto :cmEnd
 C:
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo_append
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E echo_append
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch C:/Engine/build/_deps/joltphysics-subbuild/joltphysics-populate-prefix/src/joltphysics-populate-stamp/Debug/joltphysics-populate-build
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E touch C:/Engine/build/_deps/joltphysics-subbuild/joltphysics-populate-prefix/src/joltphysics-populate-stamp/$(Configuration)/joltphysics-populate-build
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -173,23 +538,79 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\Debug\joltphysics-populate-configure;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\Debug\joltphysics-populate-build</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\$(Configuration)\joltphysics-populate-configure;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\$(Configuration)\joltphysics-populate-build</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">No build step for 'joltphysics-populate'</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+cd C:\Engine\build\_deps\joltphysics-build
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E touch C:/Engine/build/_deps/joltphysics-subbuild/joltphysics-populate-prefix/src/joltphysics-populate-stamp/$(Configuration)/joltphysics-populate-build
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\$(Configuration)\joltphysics-populate-configure;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\$(Configuration)\joltphysics-populate-build</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">No build step for 'joltphysics-populate'</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+cd C:\Engine\build\_deps\joltphysics-build
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E touch C:/Engine/build/_deps/joltphysics-subbuild/joltphysics-populate-prefix/src/joltphysics-populate-stamp/$(Configuration)/joltphysics-populate-build
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\$(Configuration)\joltphysics-populate-configure;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\$(Configuration)\joltphysics-populate-build</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">No build step for 'joltphysics-populate'</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+cd C:\Engine\build\_deps\joltphysics-build
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E touch C:/Engine/build/_deps/joltphysics-subbuild/joltphysics-populate-prefix/src/joltphysics-populate-stamp/$(Configuration)/joltphysics-populate-build
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\$(Configuration)\joltphysics-populate-configure;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\$(Configuration)\joltphysics-populate-build</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\Engine\build\_deps\joltphysics-subbuild\CMakeFiles\d1fae5e872918a09deec33edc80cb028\joltphysics-populate-install.rule">
-      <BuildInParallel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</BuildInParallel>
+    <CustomBuild Include="C:\Engine\build\_deps\joltphysics-subbuild\CMakeFiles\32593ff3401460d9d840a43388e9fd16\joltphysics-populate-install.rule">
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">No install step for 'joltphysics-populate'</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
 cd C:\Engine\build\_deps\joltphysics-build
 if %errorlevel% neq 0 goto :cmEnd
 C:
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo_append
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E echo_append
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch C:/Engine/build/_deps/joltphysics-subbuild/joltphysics-populate-prefix/src/joltphysics-populate-stamp/Debug/joltphysics-populate-install
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E touch C:/Engine/build/_deps/joltphysics-subbuild/joltphysics-populate-prefix/src/joltphysics-populate-stamp/$(Configuration)/joltphysics-populate-install
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -197,23 +618,79 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\Debug\joltphysics-populate-build;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\Debug\joltphysics-populate-install</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\$(Configuration)\joltphysics-populate-build;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\$(Configuration)\joltphysics-populate-install</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">No install step for 'joltphysics-populate'</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+cd C:\Engine\build\_deps\joltphysics-build
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E touch C:/Engine/build/_deps/joltphysics-subbuild/joltphysics-populate-prefix/src/joltphysics-populate-stamp/$(Configuration)/joltphysics-populate-install
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\$(Configuration)\joltphysics-populate-build;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\$(Configuration)\joltphysics-populate-install</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">No install step for 'joltphysics-populate'</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+cd C:\Engine\build\_deps\joltphysics-build
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E touch C:/Engine/build/_deps/joltphysics-subbuild/joltphysics-populate-prefix/src/joltphysics-populate-stamp/$(Configuration)/joltphysics-populate-install
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\$(Configuration)\joltphysics-populate-build;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\$(Configuration)\joltphysics-populate-install</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">No install step for 'joltphysics-populate'</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+cd C:\Engine\build\_deps\joltphysics-build
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E touch C:/Engine/build/_deps/joltphysics-subbuild/joltphysics-populate-prefix/src/joltphysics-populate-stamp/$(Configuration)/joltphysics-populate-install
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\$(Configuration)\joltphysics-populate-build;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\$(Configuration)\joltphysics-populate-install</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\Engine\build\_deps\joltphysics-subbuild\CMakeFiles\d1fae5e872918a09deec33edc80cb028\joltphysics-populate-test.rule">
-      <BuildInParallel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</BuildInParallel>
+    <CustomBuild Include="C:\Engine\build\_deps\joltphysics-subbuild\CMakeFiles\32593ff3401460d9d840a43388e9fd16\joltphysics-populate-test.rule">
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">No test step for 'joltphysics-populate'</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
 cd C:\Engine\build\_deps\joltphysics-build
 if %errorlevel% neq 0 goto :cmEnd
 C:
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo_append
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E echo_append
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch C:/Engine/build/_deps/joltphysics-subbuild/joltphysics-populate-prefix/src/joltphysics-populate-stamp/Debug/joltphysics-populate-test
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E touch C:/Engine/build/_deps/joltphysics-subbuild/joltphysics-populate-prefix/src/joltphysics-populate-stamp/$(Configuration)/joltphysics-populate-test
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -221,21 +698,77 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\Debug\joltphysics-populate-install;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\Debug\joltphysics-populate-test</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\$(Configuration)\joltphysics-populate-install;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\$(Configuration)\joltphysics-populate-test</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">No test step for 'joltphysics-populate'</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+cd C:\Engine\build\_deps\joltphysics-build
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E touch C:/Engine/build/_deps/joltphysics-subbuild/joltphysics-populate-prefix/src/joltphysics-populate-stamp/$(Configuration)/joltphysics-populate-test
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\$(Configuration)\joltphysics-populate-install;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\$(Configuration)\joltphysics-populate-test</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">No test step for 'joltphysics-populate'</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+cd C:\Engine\build\_deps\joltphysics-build
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E touch C:/Engine/build/_deps/joltphysics-subbuild/joltphysics-populate-prefix/src/joltphysics-populate-stamp/$(Configuration)/joltphysics-populate-test
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\$(Configuration)\joltphysics-populate-install;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\$(Configuration)\joltphysics-populate-test</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">No test step for 'joltphysics-populate'</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+cd C:\Engine\build\_deps\joltphysics-build
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E touch C:/Engine/build/_deps/joltphysics-subbuild/joltphysics-populate-prefix/src/joltphysics-populate-stamp/$(Configuration)/joltphysics-populate-test
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\$(Configuration)\joltphysics-populate-install;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\$(Configuration)\joltphysics-populate-test</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\Engine\build\_deps\joltphysics-subbuild\CMakeFiles\6d6e62c0d16477ac65af47f71341bc72\joltphysics-populate-complete.rule">
-      <BuildInParallel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</BuildInParallel>
+    <CustomBuild Include="C:\Engine\build\_deps\joltphysics-subbuild\CMakeFiles\75644cefad0d003f752b7fafb60c13f1\joltphysics-populate-complete.rule">
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Completed 'joltphysics-populate'</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
-"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E make_directory C:/Engine/build/_deps/joltphysics-subbuild/CMakeFiles/Debug
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E make_directory C:/Engine/build/_deps/joltphysics-subbuild/CMakeFiles/$(Configuration)
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch C:/Engine/build/_deps/joltphysics-subbuild/CMakeFiles/Debug/joltphysics-populate-complete
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E touch C:/Engine/build/_deps/joltphysics-subbuild/CMakeFiles/$(Configuration)/joltphysics-populate-complete
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch C:/Engine/build/_deps/joltphysics-subbuild/joltphysics-populate-prefix/src/joltphysics-populate-stamp/Debug/joltphysics-populate-done
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E touch C:/Engine/build/_deps/joltphysics-subbuild/joltphysics-populate-prefix/src/joltphysics-populate-stamp/$(Configuration)/joltphysics-populate-done
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -243,15 +776,68 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\Debug\joltphysics-populate-install;C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\Debug\joltphysics-populate-mkdir;C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\Debug\joltphysics-populate-download;C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\Debug\joltphysics-populate-update;C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\Debug\joltphysics-populate-patch;C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\Debug\joltphysics-populate-configure;C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\Debug\joltphysics-populate-build;C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\Debug\joltphysics-populate-test;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Engine\build\_deps\joltphysics-subbuild\CMakeFiles\Debug\joltphysics-populate-complete</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\$(Configuration)\joltphysics-populate-install;C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\$(Configuration)\joltphysics-populate-mkdir;C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\$(Configuration)\joltphysics-populate-download;C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\$(Configuration)\joltphysics-populate-update;C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\$(Configuration)\joltphysics-populate-patch;C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\$(Configuration)\joltphysics-populate-configure;C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\$(Configuration)\joltphysics-populate-build;C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\$(Configuration)\joltphysics-populate-test;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Engine\build\_deps\joltphysics-subbuild\CMakeFiles\$(Configuration)\joltphysics-populate-complete</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
       <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</VerifyInputsAndOutputsExist>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Completed 'joltphysics-populate'</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E make_directory C:/Engine/build/_deps/joltphysics-subbuild/CMakeFiles/$(Configuration)
+if %errorlevel% neq 0 goto :cmEnd
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E touch C:/Engine/build/_deps/joltphysics-subbuild/CMakeFiles/$(Configuration)/joltphysics-populate-complete
+if %errorlevel% neq 0 goto :cmEnd
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E touch C:/Engine/build/_deps/joltphysics-subbuild/joltphysics-populate-prefix/src/joltphysics-populate-stamp/$(Configuration)/joltphysics-populate-done
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\$(Configuration)\joltphysics-populate-install;C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\$(Configuration)\joltphysics-populate-mkdir;C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\$(Configuration)\joltphysics-populate-download;C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\$(Configuration)\joltphysics-populate-update;C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\$(Configuration)\joltphysics-populate-patch;C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\$(Configuration)\joltphysics-populate-configure;C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\$(Configuration)\joltphysics-populate-build;C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\$(Configuration)\joltphysics-populate-test;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Engine\build\_deps\joltphysics-subbuild\CMakeFiles\$(Configuration)\joltphysics-populate-complete</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</VerifyInputsAndOutputsExist>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Completed 'joltphysics-populate'</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E make_directory C:/Engine/build/_deps/joltphysics-subbuild/CMakeFiles/$(Configuration)
+if %errorlevel% neq 0 goto :cmEnd
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E touch C:/Engine/build/_deps/joltphysics-subbuild/CMakeFiles/$(Configuration)/joltphysics-populate-complete
+if %errorlevel% neq 0 goto :cmEnd
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E touch C:/Engine/build/_deps/joltphysics-subbuild/joltphysics-populate-prefix/src/joltphysics-populate-stamp/$(Configuration)/joltphysics-populate-done
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\$(Configuration)\joltphysics-populate-install;C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\$(Configuration)\joltphysics-populate-mkdir;C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\$(Configuration)\joltphysics-populate-download;C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\$(Configuration)\joltphysics-populate-update;C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\$(Configuration)\joltphysics-populate-patch;C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\$(Configuration)\joltphysics-populate-configure;C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\$(Configuration)\joltphysics-populate-build;C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\$(Configuration)\joltphysics-populate-test;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Engine\build\_deps\joltphysics-subbuild\CMakeFiles\$(Configuration)\joltphysics-populate-complete</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</VerifyInputsAndOutputsExist>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Completed 'joltphysics-populate'</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E make_directory C:/Engine/build/_deps/joltphysics-subbuild/CMakeFiles/$(Configuration)
+if %errorlevel% neq 0 goto :cmEnd
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E touch C:/Engine/build/_deps/joltphysics-subbuild/CMakeFiles/$(Configuration)/joltphysics-populate-complete
+if %errorlevel% neq 0 goto :cmEnd
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -E touch C:/Engine/build/_deps/joltphysics-subbuild/joltphysics-populate-prefix/src/joltphysics-populate-stamp/$(Configuration)/joltphysics-populate-done
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\$(Configuration)\joltphysics-populate-install;C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\$(Configuration)\joltphysics-populate-mkdir;C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\$(Configuration)\joltphysics-populate-download;C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\$(Configuration)\joltphysics-populate-update;C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\$(Configuration)\joltphysics-populate-patch;C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\$(Configuration)\joltphysics-populate-configure;C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\$(Configuration)\joltphysics-populate-build;C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\src\joltphysics-populate-stamp\$(Configuration)\joltphysics-populate-test;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Engine\build\_deps\joltphysics-subbuild\CMakeFiles\$(Configuration)\joltphysics-populate-complete</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+      <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</VerifyInputsAndOutputsExist>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="C:\Engine\build\_deps\joltphysics-subbuild\CMakeFiles\f1b167279950dfcb732839de628b1896\joltphysics-populate.rule">
-      <BuildInParallel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</BuildInParallel>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'"></Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
 :cmEnd
@@ -260,10 +846,46 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Engine\build\_deps\joltphysics-subbuild\CMakeFiles\Debug\joltphysics-populate-complete;%(AdditionalInputs)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Engine\build\_deps\joltphysics-subbuild\CMakeFiles\$(Configuration)\joltphysics-populate-complete;%(AdditionalInputs)</AdditionalInputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Engine\build\_deps\joltphysics-subbuild\CMakeFiles\joltphysics-populate</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
       <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</VerifyInputsAndOutputsExist>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'"></Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Engine\build\_deps\joltphysics-subbuild\CMakeFiles\$(Configuration)\joltphysics-populate-complete;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Engine\build\_deps\joltphysics-subbuild\CMakeFiles\joltphysics-populate</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</VerifyInputsAndOutputsExist>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'"></Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Engine\build\_deps\joltphysics-subbuild\CMakeFiles\$(Configuration)\joltphysics-populate-complete;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Engine\build\_deps\joltphysics-subbuild\CMakeFiles\joltphysics-populate</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</VerifyInputsAndOutputsExist>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'"></Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Engine\build\_deps\joltphysics-subbuild\CMakeFiles\$(Configuration)\joltphysics-populate-complete;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Engine\build\_deps\joltphysics-subbuild\CMakeFiles\joltphysics-populate</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+      <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</VerifyInputsAndOutputsExist>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
@@ -271,7 +893,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <UseUtf8Encoding>Always</UseUtf8Encoding>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/Engine/build/_deps/joltphysics-subbuild/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
-"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:/Engine/build/_deps/joltphysics-subbuild -BC:/Engine/build/_deps/joltphysics-subbuild --check-stamp-file C:/Engine/build/_deps/joltphysics-subbuild/CMakeFiles/generate.stamp
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -SC:/Engine/build/_deps/joltphysics-subbuild -BC:/Engine/build/_deps/joltphysics-subbuild --check-stamp-file C:/Engine/build/_deps/joltphysics-subbuild/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -279,16 +901,54 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Engine\build\_deps\joltphysics-subbuild\CMakeFiles\3.31.6-msvc6\CMakeSystem.cmake;C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\tmp\joltphysics-populate-mkdirs.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.31\Modules\CMakeGenericSystem.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.31\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.31\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.31\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.31\Modules\ExternalProject.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.31\Modules\ExternalProject\PatchInfo.txt.in;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.31\Modules\ExternalProject\RepositoryInfo.txt.in;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.31\Modules\ExternalProject\UpdateInfo.txt.in;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.31\Modules\ExternalProject\cfgcmd.txt.in;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.31\Modules\ExternalProject\gitclone.cmake.in;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.31\Modules\ExternalProject\gitupdate.cmake.in;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.31\Modules\ExternalProject\mkdirs.cmake.in;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.31\Modules\ExternalProject\shared_internal_commands.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.31\Modules\Platform\Windows-Initialize.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.31\Modules\Platform\Windows.cmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.31\Modules\Platform\WindowsPaths.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\CRYENGINE_Source-release\Tools\CMake\Win32\share\cmake-3.22\Modules\CMakeDetermineSystem.cmake;C:\CRYENGINE_Source-release\Tools\CMake\Win32\share\cmake-3.22\Modules\CMakeGenericSystem.cmake;C:\CRYENGINE_Source-release\Tools\CMake\Win32\share\cmake-3.22\Modules\CMakeInitializeConfigs.cmake;C:\CRYENGINE_Source-release\Tools\CMake\Win32\share\cmake-3.22\Modules\CMakeSystem.cmake.in;C:\CRYENGINE_Source-release\Tools\CMake\Win32\share\cmake-3.22\Modules\CMakeSystemSpecificInformation.cmake;C:\CRYENGINE_Source-release\Tools\CMake\Win32\share\cmake-3.22\Modules\CMakeSystemSpecificInitialize.cmake;C:\CRYENGINE_Source-release\Tools\CMake\Win32\share\cmake-3.22\Modules\ExternalProject-gitupdate.cmake.in;C:\CRYENGINE_Source-release\Tools\CMake\Win32\share\cmake-3.22\Modules\ExternalProject.cmake;C:\CRYENGINE_Source-release\Tools\CMake\Win32\share\cmake-3.22\Modules\Platform\Windows.cmake;C:\CRYENGINE_Source-release\Tools\CMake\Win32\share\cmake-3.22\Modules\Platform\WindowsPaths.cmake;C:\CRYENGINE_Source-release\Tools\CMake\Win32\share\cmake-3.22\Modules\RepositoryInfo.txt.in;C:\Engine\build\_deps\joltphysics-subbuild\CMakeFiles\3.22.1\CMakeSystem.cmake;C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\tmp\joltphysics-populate-cfgcmd.txt.in;%(AdditionalInputs)</AdditionalInputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Engine\build\_deps\joltphysics-subbuild\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/Engine/build/_deps/joltphysics-subbuild/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -SC:/Engine/build/_deps/joltphysics-subbuild -BC:/Engine/build/_deps/joltphysics-subbuild --check-stamp-file C:/Engine/build/_deps/joltphysics-subbuild/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\CRYENGINE_Source-release\Tools\CMake\Win32\share\cmake-3.22\Modules\CMakeDetermineSystem.cmake;C:\CRYENGINE_Source-release\Tools\CMake\Win32\share\cmake-3.22\Modules\CMakeGenericSystem.cmake;C:\CRYENGINE_Source-release\Tools\CMake\Win32\share\cmake-3.22\Modules\CMakeInitializeConfigs.cmake;C:\CRYENGINE_Source-release\Tools\CMake\Win32\share\cmake-3.22\Modules\CMakeSystem.cmake.in;C:\CRYENGINE_Source-release\Tools\CMake\Win32\share\cmake-3.22\Modules\CMakeSystemSpecificInformation.cmake;C:\CRYENGINE_Source-release\Tools\CMake\Win32\share\cmake-3.22\Modules\CMakeSystemSpecificInitialize.cmake;C:\CRYENGINE_Source-release\Tools\CMake\Win32\share\cmake-3.22\Modules\ExternalProject-gitupdate.cmake.in;C:\CRYENGINE_Source-release\Tools\CMake\Win32\share\cmake-3.22\Modules\ExternalProject.cmake;C:\CRYENGINE_Source-release\Tools\CMake\Win32\share\cmake-3.22\Modules\Platform\Windows.cmake;C:\CRYENGINE_Source-release\Tools\CMake\Win32\share\cmake-3.22\Modules\Platform\WindowsPaths.cmake;C:\CRYENGINE_Source-release\Tools\CMake\Win32\share\cmake-3.22\Modules\RepositoryInfo.txt.in;C:\Engine\build\_deps\joltphysics-subbuild\CMakeFiles\3.22.1\CMakeSystem.cmake;C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\tmp\joltphysics-populate-cfgcmd.txt.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Engine\build\_deps\joltphysics-subbuild\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule C:/Engine/build/_deps/joltphysics-subbuild/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -SC:/Engine/build/_deps/joltphysics-subbuild -BC:/Engine/build/_deps/joltphysics-subbuild --check-stamp-file C:/Engine/build/_deps/joltphysics-subbuild/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\CRYENGINE_Source-release\Tools\CMake\Win32\share\cmake-3.22\Modules\CMakeDetermineSystem.cmake;C:\CRYENGINE_Source-release\Tools\CMake\Win32\share\cmake-3.22\Modules\CMakeGenericSystem.cmake;C:\CRYENGINE_Source-release\Tools\CMake\Win32\share\cmake-3.22\Modules\CMakeInitializeConfigs.cmake;C:\CRYENGINE_Source-release\Tools\CMake\Win32\share\cmake-3.22\Modules\CMakeSystem.cmake.in;C:\CRYENGINE_Source-release\Tools\CMake\Win32\share\cmake-3.22\Modules\CMakeSystemSpecificInformation.cmake;C:\CRYENGINE_Source-release\Tools\CMake\Win32\share\cmake-3.22\Modules\CMakeSystemSpecificInitialize.cmake;C:\CRYENGINE_Source-release\Tools\CMake\Win32\share\cmake-3.22\Modules\ExternalProject-gitupdate.cmake.in;C:\CRYENGINE_Source-release\Tools\CMake\Win32\share\cmake-3.22\Modules\ExternalProject.cmake;C:\CRYENGINE_Source-release\Tools\CMake\Win32\share\cmake-3.22\Modules\Platform\Windows.cmake;C:\CRYENGINE_Source-release\Tools\CMake\Win32\share\cmake-3.22\Modules\Platform\WindowsPaths.cmake;C:\CRYENGINE_Source-release\Tools\CMake\Win32\share\cmake-3.22\Modules\RepositoryInfo.txt.in;C:\Engine\build\_deps\joltphysics-subbuild\CMakeFiles\3.22.1\CMakeSystem.cmake;C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\tmp\joltphysics-populate-cfgcmd.txt.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Engine\build\_deps\joltphysics-subbuild\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule C:/Engine/build/_deps/joltphysics-subbuild/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+C:\CRYENGINE_Source-release\Tools\CMake\Win32\bin\cmake.exe -SC:/Engine/build/_deps/joltphysics-subbuild -BC:/Engine/build/_deps/joltphysics-subbuild --check-stamp-file C:/Engine/build/_deps/joltphysics-subbuild/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\CRYENGINE_Source-release\Tools\CMake\Win32\share\cmake-3.22\Modules\CMakeDetermineSystem.cmake;C:\CRYENGINE_Source-release\Tools\CMake\Win32\share\cmake-3.22\Modules\CMakeGenericSystem.cmake;C:\CRYENGINE_Source-release\Tools\CMake\Win32\share\cmake-3.22\Modules\CMakeInitializeConfigs.cmake;C:\CRYENGINE_Source-release\Tools\CMake\Win32\share\cmake-3.22\Modules\CMakeSystem.cmake.in;C:\CRYENGINE_Source-release\Tools\CMake\Win32\share\cmake-3.22\Modules\CMakeSystemSpecificInformation.cmake;C:\CRYENGINE_Source-release\Tools\CMake\Win32\share\cmake-3.22\Modules\CMakeSystemSpecificInitialize.cmake;C:\CRYENGINE_Source-release\Tools\CMake\Win32\share\cmake-3.22\Modules\ExternalProject-gitupdate.cmake.in;C:\CRYENGINE_Source-release\Tools\CMake\Win32\share\cmake-3.22\Modules\ExternalProject.cmake;C:\CRYENGINE_Source-release\Tools\CMake\Win32\share\cmake-3.22\Modules\Platform\Windows.cmake;C:\CRYENGINE_Source-release\Tools\CMake\Win32\share\cmake-3.22\Modules\Platform\WindowsPaths.cmake;C:\CRYENGINE_Source-release\Tools\CMake\Win32\share\cmake-3.22\Modules\RepositoryInfo.txt.in;C:\Engine\build\_deps\joltphysics-subbuild\CMakeFiles\3.22.1\CMakeSystem.cmake;C:\Engine\build\_deps\joltphysics-subbuild\joltphysics-populate-prefix\tmp\joltphysics-populate-cfgcmd.txt.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Engine\build\_deps\joltphysics-subbuild\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <None Include="C:\Engine\build\_deps\joltphysics-subbuild\CMakeFiles\joltphysics-populate">
     </None>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="C:\Engine\build\_deps\joltphysics-subbuild\ZERO_CHECK.vcxproj">
       <Project>{37073F3B-5502-3839-B17E-52DAC6A8D4C1}</Project>
