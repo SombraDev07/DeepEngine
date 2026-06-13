@@ -106,12 +106,27 @@ int WINAPI WinMain(HINSTANCE hInst, HINSTANCE, LPSTR, int nShow) {
 
 		if (g_render) {
 			g_render->BeginFrame();
-			g_render->RenderSky(g_cam); // Sky first (background)
-			if (g_terrainUploaded) g_render->DrawMeshCached(g_terrainMesh, g_cam, Vec3(0,0,0), Vec3(1), Vec3(1,1,1));
+
+			// 1. Accumulate lit geometry into CPU buffer
 			for (auto e : g_ents) { auto& t = ECS::Get<TransformComponent>(e); g_render->DrawMesh(*MeshCache::Get().GetCube(), t.position, Vec3(1), Vec3(0.3f + ((u32)e%7)*0.1f, 0.4f + ((u32)e%5)*0.1f, 0.6f + ((u32)e%3)*0.1f)); }
-			if (g_loadedMesh) g_render->DrawMeshCached(*g_loadedMesh, g_cam, g_loadedPos, Vec3(g_loadedScale), Vec3(1,1,1));
+
+			// 2. Shadow pass — runs before flush so geometry is still in CPU buffer
+			g_render->RenderShadowMap(g_cam);
+
+			// 3. Sky (background, no depth write)
+			g_render->RenderSky(g_cam);
+
+			// 4. Flush accumulated geometry with per-pixel lighting + PCF shadow
 			g_render->FlushLit(g_cam);
+
+			// 5. Cached meshes (terrain, loaded model) — draw directly with own world matrix
+			if (g_terrainUploaded) g_render->DrawMeshCached(g_terrainMesh, g_cam, Vec3(0,0,0), Vec3(1), Vec3(1,1,1));
+			if (g_loadedMesh)      g_render->DrawMeshCached(*g_loadedMesh, g_cam, g_loadedPos, Vec3(g_loadedScale), Vec3(1,1,1));
+
+			// 6. Wire overlay
 			g_render->DrawGrid(g_cam);
+
+			// 7. Expose the viewport SRV to ImGui
 			g_render->RenderViewport(g_cam, &g_srv);
 		}
 
