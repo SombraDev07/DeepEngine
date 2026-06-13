@@ -1,0 +1,8 @@
+# Copyright 2001-2021 Crytek GmbH / Crytek Group. All rights reserved.
+def build(bld):
+	bld.CryEditorPlugin(
+		target          = 'EditorAnimationStateMachine',
+		vs_filter       = 'Sandbox/Plugins',
+		file_list       = 'editoranimstatemachine.waf_files',
+		pch             = 'StdAfx.cpp',
+	)

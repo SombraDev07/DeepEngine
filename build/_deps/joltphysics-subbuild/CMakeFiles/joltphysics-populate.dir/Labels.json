@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "C:/Engine/build/_deps/joltphysics-subbuild/CMakeFiles/joltphysics-populate"
+		},
+		{
+			"file" : "C:/Engine/build/_deps/joltphysics-subbuild/CMakeFiles/f1b167279950dfcb732839de628b1896/joltphysics-populate.rule"
+		},
+		{
+			"file" : "C:/Engine/build/_deps/joltphysics-subbuild/CMakeFiles/6d6e62c0d16477ac65af47f71341bc72/joltphysics-populate-complete.rule"
+		},
+		{
+			"file" : "C:/Engine/build/_deps/joltphysics-subbuild/CMakeFiles/d1fae5e872918a09deec33edc80cb028/joltphysics-populate-build.rule"
+		},
+		{
+			"file" : "C:/Engine/build/_deps/joltphysics-subbuild/CMakeFiles/d1fae5e872918a09deec33edc80cb028/joltphysics-populate-configure.rule"
+		},
+		{
+			"file" : "C:/Engine/build/_deps/joltphysics-subbuild/CMakeFiles/d1fae5e872918a09deec33edc80cb028/joltphysics-populate-download.rule"
+		},
+		{
+			"file" : "C:/Engine/build/_deps/joltphysics-subbuild/CMakeFiles/d1fae5e872918a09deec33edc80cb028/joltphysics-populate-install.rule"
+		},
+		{
+			"file" : "C:/Engine/build/_deps/joltphysics-subbuild/CMakeFiles/d1fae5e872918a09deec33edc80cb028/joltphysics-populate-mkdir.rule"
+		},
+		{
+			"file" : "C:/Engine/build/_deps/joltphysics-subbuild/CMakeFiles/d1fae5e872918a09deec33edc80cb028/joltphysics-populate-patch.rule"
+		},
+		{
+			"file" : "C:/Engine/build/_deps/joltphysics-subbuild/CMakeFiles/d1fae5e872918a09deec33edc80cb028/joltphysics-populate-test.rule"
+		},
+		{
+			"file" : "C:/Engine/build/_deps/joltphysics-subbuild/CMakeFiles/d1fae5e872918a09deec33edc80cb028/joltphysics-populate-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"joltphysics-populate"
+		],
+		"name" : "joltphysics-populate"
+	}
+}

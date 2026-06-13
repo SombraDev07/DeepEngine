@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Engine\build\_deps\miniaudio-src\extras\nodes\ma_channel_combiner_node\ma_channel_combiner_node.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Engine\build\_deps\miniaudio-src\extras\nodes\ma_channel_combiner_node\ma_channel_combiner_node.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Engine\build\_deps\miniaudio-src\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{8C0D1B3D-05A0-3865-8DAA-6664F49A3FFB}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{A4DA1752-450F-3C62-A1D7-5151A6AF7643}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

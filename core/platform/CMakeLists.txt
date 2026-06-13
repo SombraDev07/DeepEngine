@@ -1,0 +1,11 @@
+add_library(EnginePlatform INTERFACE)
+target_include_directories(EnginePlatform INTERFACE ${CMAKE_CURRENT_SOURCE_DIR})
+target_link_libraries(EnginePlatform INTERFACE EngineCore)
+
+if(WIN32)
+	target_compile_definitions(EnginePlatform INTERFACE PLATFORM_WINDOWS)
+elseif(APPLE)
+	target_compile_definitions(EnginePlatform INTERFACE PLATFORM_MACOS)
+elseif(UNIX)
+	target_compile_definitions(EnginePlatform INTERFACE PLATFORM_LINUX)
+endif()

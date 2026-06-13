@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Engine\build\_deps\entt-subbuild\CMakeFiles\1e162af5f927800fb89ea49aeb84df74\entt-populate-mkdir.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Engine\build\_deps\entt-subbuild\CMakeFiles\1e162af5f927800fb89ea49aeb84df74\entt-populate-download.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Engine\build\_deps\entt-subbuild\CMakeFiles\1e162af5f927800fb89ea49aeb84df74\entt-populate-update.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Engine\build\_deps\entt-subbuild\CMakeFiles\1e162af5f927800fb89ea49aeb84df74\entt-populate-patch.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Engine\build\_deps\entt-subbuild\CMakeFiles\1e162af5f927800fb89ea49aeb84df74\entt-populate-configure.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Engine\build\_deps\entt-subbuild\CMakeFiles\1e162af5f927800fb89ea49aeb84df74\entt-populate-build.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Engine\build\_deps\entt-subbuild\CMakeFiles\1e162af5f927800fb89ea49aeb84df74\entt-populate-install.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Engine\build\_deps\entt-subbuild\CMakeFiles\1e162af5f927800fb89ea49aeb84df74\entt-populate-test.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Engine\build\_deps\entt-subbuild\CMakeFiles\87e61a69ef14ba37118d8edf766c3525\entt-populate-complete.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Engine\build\_deps\entt-subbuild\CMakeFiles\93b9e0cf108d24fe81a1980c1d80626d\entt-populate.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Engine\build\_deps\entt-subbuild\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\Engine\build\_deps\entt-subbuild\CMakeFiles\entt-populate" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{5A83C248-AF6B-3E52-A6A8-00DFB93D0A24}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

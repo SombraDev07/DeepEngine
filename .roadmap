@@ -1,0 +1,172 @@
+# Engine Estrutura
+## Roadmap v1.0 — Jun 2026
+
+---
+
+## Stack Tecnológica
+
+```
+Linguagem:      C++20 (core) + Python 3 (ferramentas)
+Render:         Vulkan 1.3 / DX12 Ultimate / Metal (via bgfx ou The-Forge)
+Física:         Jolt Physics (MIT)
+ECS:            EnTT (MIT)
+Áudio:          MiniAudio (MIT)
+UI Editor:      Dear ImGui (MIT)
+Asset Pipeline: Python 3
+Hot Reload:     Live++ / C++ dll swap
+Build:          CMake 3.20+
+Licença:        MIT (engine própria, sem royalties)
+```
+
+---
+
+## Estrutura de Diretórios
+
+```
+Engine/
+├── core/
+│   ├── math/          Cry_Math_SSE.h (SIMD)
+│   ├── memory/        CryPool, BucketAllocator, STLPoolAllocator
+│   ├── jobs/          JobManager lock-free queue
+│   ├── platform/      Threads, atomics, platform defines
+│   ├── console/       CVar system (IConsole.h)
+│   └── streaming/     Time-sliced streaming
+├── physics/           CryPhysics headers (referência) → Jolt Physics
+├── render/
+│   └── svo/           SVO Global Illumination (portar D3D11→Vulkan)
+├── animation/
+│   ├── statemachine/  NOSSA Animation State Machine ★
+│   ├── skeleton/      ISkeletonAnim, layers, blending
+│   ├── ik/            LimbIK, LookIK, AimIK, FeetLock
+│   └── blendspace/    ParametricSampler 1D/2D/3D
+├── editor/            Plugin EditorAnimationStateMachine
+├── tools/             Python scripts, asset pipeline
+├── thirdparty/
+│   ├── EnTT/          ECS library
+│   ├── JoltPhysics/   Physics engine
+│   ├── bgfx/          Render abstraction
+│   ├── imgui/         Editor UI
+│   └── miniaudio/     Audio engine
+├── .roadmap           Este arquivo
+└── README.md          Documentação
+```
+
+---
+
+## Sistemas Portados do CRYENGINE
+
+| Sistema | Status | Prioridade |
+|---------|--------|------------|
+| Cry_Math_SSE.h | ✅ Copiado | Alta |
+| CryPool Allocators | ✅ Copiado | Alta |
+| Job Manager | ✅ Copiado | Alta |
+| CVar System (IConsole.h) | ✅ Copiado | Média |
+| Streaming | ✅ Copiado | Média |
+| Animation State Machine | ✅ Copiado | Alta ★ |
+| Editor ASM Plugin | ✅ Copiado | Alta ★ |
+| CryPhysics | ✅ Copiado | Baixa (referência) |
+| SVO GI | ✅ Copiado | Baixa (portar depois) |
+| ISkeletonAnim + BlendSpaces | ⏳ Copiando | Alta |
+
+---
+
+## Fases de Desenvolvimento
+
+### Fase 0: Infraestrutura ✅ CONCLUÍDO
+- [x] Build system (CMake 3.20+)
+- [x] Platform layer (clean, modern)
+- [x] Math library (Vec3, Vec4, Quat, Mat4)
+- [x] Memory allocators (IAllocator, PoolAllocator, DefaultAllocator)
+- [x] Job system (multi-thread, lock-free ready)
+- [x] Console/CVar system (Logger)
+- [x] Logger (Debug/Info/Warn/Error + file:line)
+- [x] Profiler (ScopedTimer)
+- [x] ECS wrapper (EnTT-based)
+- [x] Third-party setup script (setup.ps1)
+- [x] Test suite (math, memory, jobs, ECS ready)
+- [x] 169 linhas de teste passando
+
+### Fase 1: Render
+- [ ] Abstração de GPU (bgfx ou The-Forge)
+- [ ] Window management (GLFW/SDL2)
+- [ ] Basic triangle → mesh → material pipeline
+- [ ] Forward+ renderer com clustered light
+- [ ] Bindless resources
+- [ ] GPU-driven culling + indirect draw
+- [ ] Mesh shaders (geometry pipeline moderno)
+- [ ] Ray tracing (RT + compute fallback para GI)
+
+### Fase 2: ECS + Física
+- [ ] Integrar EnTT
+- [ ] TransformComponent, MeshComponent, etc
+- [ ] Integrar Jolt Physics
+- [ ] RigidBodyComponent, CharacterController
+- [ ] Colisão, triggers, raycasts
+
+### Fase 3: Animação (★ NOSSO FOCO)
+- [ ] Portar ISkeletonAnim → ECS AnimationSystem
+- [ ] Portar BlendSpaces (ParametricSampler)
+- [ ] Portar IK (LimbIK, LookIK, AimIK, FeetLock)
+- [ ] Portar nossa Animation State Machine
+- [ ] Runtime: Update, EvaluateConditions, PlayState
+- [ ] Editor visual: NodeGraph com drag & drop
+- [ ] Live preview 3D com personagem
+- [ ] Import FBX/glTF → animações
+
+### Fase 4: Áudio + Input
+- [ ] Integrar MiniAudio
+- [ ] AudioComponent (3D spatial, triggers)
+- [ ] Input system (teclado, mouse, gamepad)
+- [ ] Input mapping com actions
+
+### Fase 5: Networking
+- [ ] ENet / GameNetworkingSockets
+- [ ] Replication system (component-based)
+- [ ] Autoridade server-side
+- [ ] Predição client-side
+
+### Fase 6: Editor + Tooling
+- [ ] Dear ImGui editor framework
+- [ ] Asset browser
+- [ ] Level editor (colocar mesh, luz, entidade)
+- [ ] Material editor (node graph)
+- [ ] Animation State Machine Editor (já temos base!)
+- [ ] Python asset pipeline (import/export/process)
+- [ ] Hot reload (C++ e assets)
+
+### Fase 7: Port SVO GI
+- [ ] Portar algoritmo de voxelização
+- [ ] Compute shader propagation
+- [ ] Cone tracing
+- [ ] Integrar com Forward+ renderer
+
+### Fase 8: Polimento
+- [ ] Profiling tools
+- [ ] Debug drawing
+- [ ] Memory tracking
+- [ ] Crash handler
+- [ ] Package/build system
+
+---
+
+## Diferenciais vs Unreal/Unity/Godot
+
+1. **Animation State Machine visual** — drag & drop de animações, live preview
+2. **SVO Global Illumination** — voxel-based, dinâmico, sem baking
+3. **Job System lock-free** — single atomic 64-bit, 4 prioridades
+4. **CryPool Allocators** — FirstFit/BestFit/WorstFit + defrag
+5. **Zero royalties** — MIT license, 100% seu
+6. **ECS puro** — EnTT, data-oriented desde o início
+7. **Uma linguagem** — C++20 no core, sem C#/Lua obrigatório
+8. **API moderna** — Vulkan 1.3 + DX12 Ultimate, mesh shaders, RT
+
+---
+
+## Referência: Decima Engine
+
+Conceitos que estamos seguindo do Decima:
+- Forward+ renderer (não deferred)
+- GPU-driven pipeline
+- Data-oriented design
+- Tooling integrado e visual
+- Foco em iteração rápida (WYSIWYG)

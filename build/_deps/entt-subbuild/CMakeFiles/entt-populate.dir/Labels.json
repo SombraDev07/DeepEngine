@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "C:/Engine/build/_deps/entt-subbuild/CMakeFiles/entt-populate"
+		},
+		{
+			"file" : "C:/Engine/build/_deps/entt-subbuild/CMakeFiles/93b9e0cf108d24fe81a1980c1d80626d/entt-populate.rule"
+		},
+		{
+			"file" : "C:/Engine/build/_deps/entt-subbuild/CMakeFiles/87e61a69ef14ba37118d8edf766c3525/entt-populate-complete.rule"
+		},
+		{
+			"file" : "C:/Engine/build/_deps/entt-subbuild/CMakeFiles/1e162af5f927800fb89ea49aeb84df74/entt-populate-build.rule"
+		},
+		{
+			"file" : "C:/Engine/build/_deps/entt-subbuild/CMakeFiles/1e162af5f927800fb89ea49aeb84df74/entt-populate-configure.rule"
+		},
+		{
+			"file" : "C:/Engine/build/_deps/entt-subbuild/CMakeFiles/1e162af5f927800fb89ea49aeb84df74/entt-populate-download.rule"
+		},
+		{
+			"file" : "C:/Engine/build/_deps/entt-subbuild/CMakeFiles/1e162af5f927800fb89ea49aeb84df74/entt-populate-install.rule"
+		},
+		{
+			"file" : "C:/Engine/build/_deps/entt-subbuild/CMakeFiles/1e162af5f927800fb89ea49aeb84df74/entt-populate-mkdir.rule"
+		},
+		{
+			"file" : "C:/Engine/build/_deps/entt-subbuild/CMakeFiles/1e162af5f927800fb89ea49aeb84df74/entt-populate-patch.rule"
+		},
+		{
+			"file" : "C:/Engine/build/_deps/entt-subbuild/CMakeFiles/1e162af5f927800fb89ea49aeb84df74/entt-populate-test.rule"
+		},
+		{
+			"file" : "C:/Engine/build/_deps/entt-subbuild/CMakeFiles/1e162af5f927800fb89ea49aeb84df74/entt-populate-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"entt-populate"
+		],
+		"name" : "entt-populate"
+	}
+}

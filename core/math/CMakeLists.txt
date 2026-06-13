@@ -1,0 +1,3 @@
+add_library(EngineMath INTERFACE)
+target_include_directories(EngineMath INTERFACE ${CMAKE_CURRENT_SOURCE_DIR})
+target_link_libraries(EngineMath INTERFACE EnginePlatform)

@@ -1,0 +1,10 @@
+^C:\ENGINE\BUILD\_DEPS\MINIAUDIO-SUBBUILD\CMAKEFILES\ED7D321F44290F45C3E2819B6A5CD93F\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:/Engine/build/_deps/miniaudio-subbuild -BC:/Engine/build/_deps/miniaudio-subbuild --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Engine/build/_deps/miniaudio-subbuild/miniaudio-populate.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

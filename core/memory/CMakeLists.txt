@@ -1,0 +1,3 @@
+add_library(EngineMemory INTERFACE)
+target_include_directories(EngineMemory INTERFACE ${CMAKE_CURRENT_SOURCE_DIR})
+target_link_libraries(EngineMemory INTERFACE EnginePlatform)
